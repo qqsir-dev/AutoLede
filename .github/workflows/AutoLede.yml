@@ -32,7 +32,6 @@ jobs:
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
       TARGET: ${{ steps.compile.outputs.TARGET }}
-      SUBTARGET: ${{ steps.compile.outputs.SUBTARGET }}
       FIRMWARE: ${{ steps.compile.outputs.FIRMWARE }}
       GENERATE_STATUS: ${{ steps.generate.outputs.GENERATE_STATUS }}
 
@@ -74,50 +73,13 @@ jobs:
        mkdir openwrt-packages
        cd openwrt-packages
        # git clone https://github.com/longcat99/long.git 包含了一些主题
-       # git clone -b hello https://github.com/DHDAXCW/openwrt-passwall
-       # git clone https://github.com/xiaorouji/openwrt-passwall
-       # sed -i 's/ upx\/host//g' openwrt-passwall/v2ray-plugin/Makefile
-       # grep -lr upx/host openwrt-passwall/* | xargs -t -I {} sed -i '/upx\/host/d' {}
-       # git clone -b hello https://github.com/DHDAXCW/openwrt-passwall
-       # git clone https://github.com/longcat99/helloworld.git
        git clone https://github.com/fw876/helloworld.git
        git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
-       # git clone https://github.com/longcat99/OpenClash.git
-       # git clone https://github.com/vernesong/OpenClash.git
-       # git clone https://github.com/frainzy1477/luci-app-clash.git
        # git clone --depth 1 -b oaf-3.0.1 https://github.com/destan19/OpenAppFilter.git 应用过滤APP
-       # git clone https://github.com/jerrykuku/luci-app-ttnode.git
-       # git clone https://github.com/linkease/ddnsto-openwrt.git
        # git clone https://github.com/jerrykuku/luci-app-vssr.git
        # git clone https://github.com/lisaac/luci-app-dockerman.git
-       # git clone https://github.com/lisaac/luci-lib-docker.git
-       # git clone https://github.com/longcat99/luci-app-dnsfilter.git
-       # git clone https://github.com/garypang13/luci-app-dnsfilter.git
-       # git clone https://github.com/garypang13/luci-app-bypass.git
-       # git clone https://github.com/longcat99/luci-app-bypass.git
-       # git clone --depth 1 https://github.com/DHDAXCW/smartdns-le
-       # git clone --depth 1 https://github.com/longcat99/smartdns-le
-       # git clone --depth 1 https://github.com/pymumu/smartdns
-       # git clone --depth 1 https://github.com/pymumu/luci-app-smartdns
-       # git clone https://github.com/longcat99/luci-app-bypass.git
-       # git clone https://github.com/kuoruan/luci-app-kcptun.git
-       # git clone https://github.com/project-lede/luci-app-godproxy.git
-       # svn co https://github.com/MrH723/openwrt-packages/trunk/luci-app-adbyby-plus
-       # svn co https://github.com/garypang13/openwrt-packages/trunk/lua-maxminddb
-       # git clone https://github.com/riverscn/openwrt-iptvhelper.git && mv openwrt-iptvhelper/luci-app-iptvhelper/po/zh_Hans openwrt-iptvhelper/luci-app-iptvhelper/po/zh-cn
-       # svn co https://github.com/Lienol/openwrt/trunk/package/network/fullconenat && rm -f fullconenat/patches/000-printk.patch        
-       # git clone --depth 1 -b LUCI-LUA-UCITRACK https://github.com/CCnut/feed-netkeeper && mv -n feed-netkeeper/* ./ ; rm -Rf feed-netkeeper
-       # git clone https://github.com/immortalwrt/openwrt-gowebdav.git
        git clone --depth 1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
-       # git clone --depth 1 -b 18.06 https://github.com/qqsir-dev/luci-theme-argon.git
        git clone https://github.com/jerrykuku/luci-app-argon-config.git
-       # git clone https://github.com/garypang13/luci-app-eqos.git && mv luci-app-eqos/po/zh_Hans luci-app-eqos/po/zh-cn
-       # git clone https://github.com/tty228/luci-app-serverchan.git
-       # git clone https://github.com/sirpdboy/luci-app-autotimeset.git
-       # git clone https://github.com/sirpdboy/NetSpeedTest
-       # svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-nginx-pingos
-       # svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-pppoe-server
-       # git clone https://github.com/BoringCat/luci-app-mentohust.git
        
     - name: Update Feeds
       run: | 
@@ -473,10 +435,7 @@ jobs:
     - name: Custom configuration
       run: |
         cd $OPENWRTROOT
-        # 修改内核为5.4
-        # sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.4/g' target/linux/x86/Makefile
-        # sed -i 's/KERNEL_TESTING_PATCHVER:=5.10/KERNEL_TESTING_PATCHVER:=5.4/g' target/linux/x86/Makefile
-        # 修改默认IP地址
+        # Modify Default IP Address
         sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_generate
         sed -i '/uci commit system/i\uci set system.@system[0].hostname='TimWrt'' package/lean/default-settings/files/zzz-default-settings
         sed -i "s/OpenWrt /YG build @TimWrt $(TZ=UTC-8 date "+%Y%m%d") /g" package/lean/default-settings/files/zzz-default-settings
@@ -491,25 +450,6 @@ jobs:
         # find package/*/ feeds/*/ -maxdepth 6 -path "*OpenClash/luci-app-openclash/luasrc/controller/openclash.lua" | xargs -i sed -i 's/\"OpenClash\")\, 50/\"OpenClash\")\, 1/g' {}
         # 修改ShadowSocksR Plus+排序
         find package/*/ feeds/*/ -maxdepth 6 -path "*helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua" | xargs -i sed -i 's/\"ShadowSocksR Plus+\")\, 10/\"ShadowSocksR Plus+\")\, 0/g' {}
-        # 修改GodProxy滤广告排序 重命名为:去TMD广告
-        # find package/*/ feeds/*/ -maxdepth 6 -path "*luci-app-godproxy/luasrc/controller/koolproxy.lua" | xargs -i sed -i 's/\"KoolproxyR Plus+\")\,1/\"KoolproxyR Plus+\")\,10/g' {}
-        # 修改luci-app-smartdns排序 
-        # find package/*/ feeds/*/ -maxdepth 6 -path "*luci-app-smartdns/luasrc/controller/smartdns.lua" | xargs -i sed -i 's/\"SmartDNS\")\, 4/\"SmartDNS\")\, 3/g' {}
-        # 修改luci/luci-app-ddns排序
-        # find package/*/ feeds/*/ -maxdepth 5 -path "*luci-app-ddns/luasrc/controller/ddns.lua" | xargs -i sed -i 's/\"Dynamic DNS\")\, 59/\"Dynamic DNS\")\, 4/g' {}
-        # 修改luci-app-ddns导航菜单位置
-        # find package/*/ feeds/*/ -maxdepth 8 -path "*luci-app-ddns/luasrc/controller/ddns.lua" | xargs -i sed -i 's/\"services\"/\"ddns\"/g' {}
-        # find package/*/ feeds/*/ -maxdepth 8 -path "*luci-app-ddns/luasrc/model/cbi/ddns/detail.lua" | xargs -i sed -i 's/\"services\"/\"ddns\"/g' {}
-        # find package/*/ feeds/*/ -maxdepth 8 -path "*luci-app-ddns/luasrc/model/cbi/ddns/global.lua" | xargs -i sed -i 's/\"services\"/\"ddns\"/g' {}
-        # find package/*/ feeds/*/ -maxdepth 8 -path "*luci-app-ddns/luasrc/model/cbi/ddns/hints.lua" | xargs -i sed -i 's/\"services\"/\"ddns\"/g' {}
-        # find package/*/ feeds/*/ -maxdepth 8 -path "*luci-app-ddns/luasrc/model/cbi/ddns/overview.lua" | xargs -i sed -i 's/\"services\"/\"ddns\"/g' {}
-        # find package/*/ feeds/*/ -maxdepth 8 -path "*luci-app-ddns/luasrc/view/ddns/detail_logview.htm" | xargs -i sed -i 's/services/ddns/g' {}
-        # find package/*/ feeds/*/ -maxdepth 8 -path "*luci-app-ddns/luasrc/view/ddns/overview_status.htm" | xargs -i sed -i 's/services/ddns/g' {}
-        # find package/*/ feeds/*/ -maxdepth 8 -path "*luci-app-ddns/luasrc/view/ddns/system_status.htm" | xargs -i sed -i 's/services/ddns/g' {}
-        # 修改luci-app-v2ray-server导航菜单位置到vpn
-        # find package/*/ feeds/*/ -maxdepth 5 -path "*luci-app-v2ray-server/luasrc/controller/v2ray_server.lua" | xargs -i sed -i 's/\"services\"/\"vpn\"/g' {}
-        # find package/*/ feeds/*/ -maxdepth 5 -path "*luci-app-v2ray-server/luasrc/model/cbi/v2ray_server/index.lua" | xargs -i sed -i 's/\"services\"/\"vpn\"/g' {}
-        # find package/*/ feeds/*/ -maxdepth 5 -path "*luci-app-v2ray-server/luasrc/model/cbi/v2ray_server/user.lua" | xargs -i sed -i 's/\"services\"/\"vpn\"/g' {}
         
         # 修改bypass依赖为smartdns
         # find package/*/ feeds/*/ -maxdepth 5 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/smartdns-le/smartdns/g' {}
@@ -526,17 +466,17 @@ jobs:
         # 修改pppoe-server排序5
         find package/*/ feeds/*/ -maxdepth 5 -path "*luci-app-pppoe-server/luasrc/controller/pppoe-server.lua" | xargs -i sed -i 's/\"PPPoE Server\")\, 3/\"PPPoE Server\")\, 5/g' {}
         
-        # 写自己的网络配置
+        # Network Configuration
          sed -i "/exit/iuci set network.lan.gateway=\'192.168.50.1\'\nuci set network.lan.dns=\'119.29.29.29 223.5.5.5\'\nuci commit network\nuci set dhcp.lan.ignore=\'1\'\nuci commit dhcp\n" package/lean/default-settings/files/zzz-default-settings
         
-        # 更改nlbwmon netlink uffer size
+        # nlbwmon netlink uffer size
          sed -i '1s/$/&\nnet.core.wmem_max=16777216\nnet.core.rmem_max=16777216/' package/base-files/files/etc/sysctl.conf
          sed -i "/exit/iuci set nlbwmon.@nlbwmon[0].netlink_buffer_size=\'10485760\'\nuci set nlbwmon.@nlbwmon[0].commit_interval=\'2h\'\nuci commit nlbwmon\n" package/lean/default-settings/files/zzz-default-settings
         
-        # 默认语言为英语
+        # Set Default Language - English
          sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-files/files/etc/rc.local
         
-    - name: 下载安装包
+    - name: Download Packages
       id: package
       run: | 
         cd $OPENWRTROOT
@@ -545,7 +485,7 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
         
-    - name: 开始编译固件
+    - name: Compile Packages
       id: compile
       run: |
         cd $OPENWRTROOT
@@ -556,18 +496,18 @@ jobs:
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
         echo "FILE_TIME=$(date "+%m/%d/%Y-%H:%M")" >> $GITHUB_ENV
-    - name: 查看磁盘使用情况
+    - name: Check Disk Status
       if: (!cancelled())
       run: df -hT
 
-    - name: 上传bin压缩目录
+    - name:  Upload bin folder
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin/packages/x86_64
 
-    - name: 整理编译好的固件
+    - name: Orgnize Firmware
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
@@ -607,7 +547,7 @@ jobs:
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
         
-    - name: 创建release标签
+    - name: Create release TAG
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
@@ -616,7 +556,7 @@ jobs:
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [国内NN网盘](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [国外WT网盘](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
-    - name: 发布至release
+    - name: Distribuilt release
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
@@ -627,7 +567,7 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
-    - name: 删除旧的Releases
+    - name: Delete Old Releases
       uses: dev-drprasad/delete-older-releases@v0.1.0
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
