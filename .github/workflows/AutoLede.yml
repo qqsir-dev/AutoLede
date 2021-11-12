@@ -66,7 +66,7 @@ jobs:
        rm -rf lean/luci-theme-argon
        rm -rf lean/luci-app-argon-config
        # rm -rf lean/luci-app-adbyby-plus
-       rm -rf lean/luci-app-uugamebooster
+       # rm -rf lean/luci-app-uugamebooster
        rm -rf lean/luci-app-qbittorrent
        rm -rf lean/luci-app-xlnetacc
        rm -rf lean/luci-app-jd-dailybonus
@@ -383,7 +383,7 @@ jobs:
           CONFIG_UnblockNeteaseMusic_NodeJS=y
           CONFIG_PACKAGE_luci-app-upnp=y
           # CONFIG_PACKAGE_luci-app-usb-printer=y
-          # CONFIG_PACKAGE_luci-app-uugamebooster=y
+          CONFIG_PACKAGE_luci-app-uugamebooster=y
           # CONFIG_PACKAGE_luci-app-v2ray-server=y
           # CONFIG_PACKAGE_luci-app-verysync=y
           CONFIG_PACKAGE_luci-app-vlmcsd=y
