@@ -31,9 +31,7 @@ jobs:
     if: github.repository == 'qqsir-dev/AutoLede'
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
-      TARGET: ${{ steps.compile.outputs.TARGET }}
       FIRMWARE: ${{ steps.compile.outputs.FIRMWARE }}
-      GENERATE_STATUS: ${{ steps.generate.outputs.GENERATE_STATUS }}
 
     steps:
     - name: Checkout
