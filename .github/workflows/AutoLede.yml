@@ -67,8 +67,8 @@ jobs:
        rm -rf lean/luci-app-qbittorrent
        rm -rf lean/luci-app-xlnetacc
        rm -rf lean/luci-app-jd-dailybonus
-       mkdir openwrt-packages
-       cd openwrt-packages
+       # mkdir openwrt-packages
+       cd lean
        # git clone https://github.com/longcat99/long.git 包含了一些主题
        git clone --depth=1 https://github.com/fw876/helloworld.git
        git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
