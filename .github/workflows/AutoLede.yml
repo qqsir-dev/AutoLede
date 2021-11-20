@@ -70,7 +70,7 @@ jobs:
        mkdir openwrt-packages
        cd openwrt-packages
        # git clone https://github.com/longcat99/long.git 包含了一些主题
-       git clone https://github.com/fw876/helloworld.git
+       git clone --depth=1 https://github.com/fw876/helloworld.git
        git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
        # git clone --depth 1 -b oaf-3.0.1 https://github.com/destan19/OpenAppFilter.git 应用过滤APP
        # git clone https://github.com/jerrykuku/luci-app-vssr.git
