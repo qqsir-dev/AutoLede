@@ -10,7 +10,7 @@ name: TimWrt_x86_64_Auto
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 18 * * *
+    - cron: 0 19 * * *
   # release:
     # types: [published]
 
