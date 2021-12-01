@@ -69,6 +69,10 @@ jobs:
        rm -rf lean/luci-app-jd-dailybonus
        rm -rf lean/luci-app-docker
        rm -rf lean/luci-app-dockerman
+       rm -rf lean/luci-lib-docker
+       rm -rf lean/luci-app-aliyundrive-webdav
+       rm -rf lean/aliyundrive-webdav
+       rm -rf lean/luci-app-go-aliyundrive-webdav
        mkdir openwrt-packages
        cd openwrt-packages
        # git clone https://github.com/longcat99/long.git 包含了一些主题
