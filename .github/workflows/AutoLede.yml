@@ -403,11 +403,14 @@ jobs:
           # CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Xray_plugin=y
           # CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Server=y
           # CONFIG_PACKAGE_luci-app-webadmin=y
-          # CONFIG_PACKAGE_luci-app-wireguard=y
+          CONFIG_PACKAGE_luci-app-wireguard=n
           CONFIG_PACKAGE_luci-app-wol=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
           # CONFIG_PACKAGE_luci-app-xlnetacc=y
           CONFIG_PACKAGE_luci-app-zerotier=y
+          CONFIG_DEFAULT_luci-app-wireguard=n
+          CONFIG_PACKAGE_luci-proto-wireguard=n
+          CONFIG_PACKAGE_wireguard-tools=n
           EOF
           # LuCI Themes:
           cat >> .config <<EOF
