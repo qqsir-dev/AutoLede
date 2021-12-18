@@ -257,6 +257,7 @@ jobs:
           # CONFIG_PACKAGE_luci-app-advanced-reboot=y
           # CONFIG_PACKAGE_luci-app-aliddns=y
           CONFIG_PACKAGE_luci-app-argon-config=y
+          CONFIG_PACKAGE_luci-i18n-argon-config-zh-cn=y
           # CONFIG_PACKAGE_luci-app-aria2=y
           CONFIG_PACKAGE_luci-app-arpbind=y
           # CONFIG_PACKAGE_luci-app-autotimeset=y
@@ -416,7 +417,8 @@ jobs:
           EOF
           # LuCI Themes:
           cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-theme-argon=y
+          CONFIG_PACKAGE_luci-theme-argon-18.06=y
+          # CONFIG_PACKAGE_luci-theme-argon=y
           # CONFIG_PACKAGE_luci-theme-argon-lean=y
           CONFIG_PACKAGE_luci-theme-netgear=y
           CONFIG_PACKAGE_luci-theme-bootstrap=y
