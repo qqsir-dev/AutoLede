@@ -15,7 +15,7 @@ on:
     # types: [published]
 
 env:
-  REPO_URL: https://github.com/qqsir-dev/lede_x86_64
+  REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
