@@ -404,8 +404,7 @@ jobs:
           EOF
           # LuCI Themes:
           cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-theme-argon-18.06=y
-          # CONFIG_PACKAGE_luci-theme-argon=y
+          CONFIG_PACKAGE_luci-theme-argon=y
           # CONFIG_PACKAGE_luci-theme-argon-lean=y
           CONFIG_PACKAGE_luci-theme-netgear=y
           CONFIG_PACKAGE_luci-theme-bootstrap=y
