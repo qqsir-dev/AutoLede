@@ -81,7 +81,8 @@ jobs:
        # git clone --depth 1 -b oaf-3.0.1 https://github.com/destan19/OpenAppFilter.git 应用过滤APP
        # git clone https://github.com/jerrykuku/luci-app-vssr.git
        # git clone https://github.com/lisaac/luci-app-dockerman.git
-       git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
+       # git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
+       git clone -b 18.06 https://github.com/qqsir-dev/luci-theme-argon.git
        git clone https://github.com/jerrykuku/luci-app-argon-config.git
        
     - name: Update Feeds
