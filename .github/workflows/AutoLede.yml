@@ -27,7 +27,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-latest
     if: github.repository == 'qqsir-dev/AutoLede'
     outputs:
@@ -112,7 +112,7 @@ jobs:
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin/packages/x86_64
-
+    
     - name: Orgnize Firmware
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
