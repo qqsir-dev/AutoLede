@@ -58,7 +58,9 @@ jobs:
         
     - name: Update Feeds
       run: | 
-       cd $OPENWRTROOT
+       cd openwrt
+       echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
+       echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
        ./scripts/feeds update -a
        
     - name: MOD index file
