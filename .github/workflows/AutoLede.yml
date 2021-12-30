@@ -77,7 +77,7 @@ jobs:
         mkdir customfeeds
         git clone --depth=1 https://github.com/coolsnowwolf/packages customfeeds/packages
         git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
-        chmod +x ../scripts/*.sh
+        
         ./scripts/feeds update -a
     - name: MOD index file
       run: |
@@ -91,7 +91,7 @@ jobs:
       run: |
         [ -e files ] && mv files $OPENWRTROOT/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRTROOT/.config
-        chmod +x scripts/*.sh
+        chmod +x script/*.sh
         cd $OPENWRTROOT
         ../$DIY_SH
         
