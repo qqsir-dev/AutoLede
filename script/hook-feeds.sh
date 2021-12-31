@@ -1,5 +1,5 @@
 #!/bin/bash
-pushd customfeeds
+# pushd customfeeds
 
 # Add luci-app-netdata
 # rm -rf packages/admin/netdata
@@ -7,7 +7,7 @@ pushd customfeeds
 # rm -rf ../package/lean/luci-app-netdata
 # svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-netdata luci/applications/luci-app-netdata
 
-popd
+# popd
 
 # Set to local feeds
 pushd customfeeds/packages
