@@ -77,8 +77,9 @@ jobs:
         mkdir customfeeds
         git clone --depth=1 https://github.com/coolsnowwolf/packages customfeeds/packages
         git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
-        
-        ./scripts/feeds update -a
+        chmod +x ../script/*.sh
+        ../script/hook-feeds.sh
+       
     - name: MOD index file
       run: |
          cd $OPENWRTROOT/package/lean/autocore/files/x86
