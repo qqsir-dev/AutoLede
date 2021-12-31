@@ -1,26 +1,23 @@
 #!/bin/bash
 
-# Add luci-app-ssr-plus
-git clone --depth=1 https://github.com/fw876/helloworld.git
-
 # fix netdata
 rm -rf ./feeds/packages/admin/netdata
 svn co https://github.com/DHDAXCW/packages/branches/ok/admin/netdata ./feeds/packages/admin/netdata
+
+# Clone community packages to package/community
+mkdir package/community
+pushd package/community
+
+# Add luci-app-ssr-plus
+git clone --depth=1 https://github.com/fw876/helloworld.git
 
 # Add luci-app-unblockneteasemusic
 rm -rf ../lean/luci-app-unblockmusic
 git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git
 
-# Add luci-app-passwall
-#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
-
 # Add luci-app-vssr <M>
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git
 git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr
-
-# Add luci-app-netdata
-rm -rf ../lean/luci-app-netdata
-git clone https://github.com/sirpdboy/luci-app-netdata
 
 # Add luci-theme-argon
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
@@ -30,6 +27,7 @@ rm -rf ../lean/luci-theme-argon
 # Add jd-dailybonus
 rm -rf ../lean/luci-app-jd-dailybonus
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
+popd
 
 # 动态DNS
 git clone --depth 1 https://github.com/small-5/ddns-scripts-dnspod package/lean/ddns-scripts_dnspod
