@@ -313,7 +313,7 @@ jobs:
           # CONFIG_PACKAGE_luci-app-mwan3=y
           # CONFIG_PACKAGE_luci-app-mwan3helper=y
           # CONFIG_PACKAGE_luci-app-mentohust=y
-          # CONFIG_PACKAGE_luci-app-n2n_v2=y
+          CONFIG_PACKAGE_luci-app-n2n_v2=y
           # CONFIG_PACKAGE_luci-app-naiveproxy=y
           CONFIG_PACKAGE_luci-app-netdata=y
           # CONFIG_PACKAGE_luci-app-nfs=y
@@ -333,22 +333,7 @@ jobs:
           # CONFIG_PACKAGE_oscam=y
           # CONFIG_PACKAGE_tvheadend=y
           # CONFIG_PACKAGE_luci-app-p910nd=y
-          # CONFIG_PACKAGE_luci-app-passwall=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Server=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Server=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_GO=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_NaiveProxy=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_haproxy=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_dns2socks=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin=y
-          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs=y
+
           # CONFIG_PACKAGE_luci-app-pppoe-relay=y
           # CONFIG_PACKAGE_luci-app-pptp-vpnserver=y
           # CONFIG_PACKAGE_luci-app-ps3netsrv=y
@@ -388,11 +373,11 @@ jobs:
           # CONFIG_PACKAGE_luci-app-syncdial=y
           # CONFIG_PACKAGE_luci-app-tencentddns=y
           # CONFIG_PACKAGE_luci-app-tinyproxy=y
-          # CONFIG_PACKAGE_luci-app-transmission=y
+          CONFIG_PACKAGE_luci-app-transmission=y
           # CONFIG_PACKAGE_luci-app-trojan-server=y
           CONFIG_PACKAGE_luci-app-ttyd=y
           # CONFIG_PACKAGE_luci-app-udpxy=y
-          CONFIG_PACKAGE_luci-app-uhttpd=y
+          CONFIG_PACKAGE_luci-app-uhttpd=n
           CONFIG_PACKAGE_luci-app-unblockmusic=y
           CONFIG_UnblockNeteaseMusic_Go=y
           CONFIG_UnblockNeteaseMusic_NodeJS=y
@@ -409,12 +394,45 @@ jobs:
           # CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Kcptun=y
           # CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Xray_plugin=y
           # CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Server=y
-          # CONFIG_PACKAGE_luci-app-webadmin=y
-          # CONFIG_PACKAGE_luci-app-wireguard=y
+          CONFIG_PACKAGE_luci-app-webadmin=n
+          CONFIG_PACKAGE_luci-app-wireguard=n
           CONFIG_PACKAGE_luci-app-wol=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
-          # CONFIG_PACKAGE_luci-app-xlnetacc=y
+          CONFIG_PACKAGE_luci-app-xlnetacc=n
           CONFIG_PACKAGE_luci-app-zerotier=y
+          CONFIG_PACKAGE_strongswan-ipsec=y
+          CONFIG_PACKAGE_strongswan-mod-kernel-libipsec=y
+          CONFIG_PACKAGE_kmod-ipt-ipsec=y
+          CONFIG_PACKAGE_kmod-ipsec=y
+          CONFIG_PACKAGE_kmod-ipsec4=y
+          CONFIG_PACKAGE_kmod-ipsec6=y
+          CONFIG_PACKAGE_kmod-iptunnel4=y
+          CONFIG_PACKAGE_kmod-iptunnel6=y
+          CONFIG_PACKAGE_iptables-mod-ipsec=y
+          CONFIG_PACKAGE_n2n-edge=y
+          CONFIG_PACKAGE_n2n-supernode=y
+          CONFIG_PACKAGE_openvpn-easy-rsa=y
+          CONFIG_PACKAGE_openvpn-openssl=y
+          CONFIG_OPENVPN_openssl_ENABLE_LZO=y
+          CONFIG_OPENVPN_openssl_ENABLE_LZ4=y
+          CONFIG_OPENVPN_openssl_ENABLE_FRAGMENT=y
+          CONFIG_OPENVPN_openssl_ENABLE_MULTIHOME=y
+          CONFIG_OPENVPN_openssl_ENABLE_PORT_SHARE=y
+          CONFIG_OPENVPN_openssl_ENABLE_DEF_AUTH=y
+          CONFIG_OPENVPN_openssl_ENABLE_PF=y
+          CONFIG_OPENVPN_openssl_ENABLE_SMALL=y
+          CONFIG_PACKAGE_softethervpn5-bridge=y
+          CONFIG_PACKAGE_softethervpn5-client=y
+          CONFIG_PACKAGE_softethervpn5-libs=y
+          CONFIG_PACKAGE_softethervpn5-server=y
+          CONFIG_PACKAGE_libopenssl=y
+          CONFIG_PACKAGE_libopenssl-conf=y
+          CONFIG_PACKAGE_libustream-openssl=y
+          CONFIG_PACKAGE_transmission-daemon-openssl=y
+          CONFIG_PACKAGE_transmission-web-control=y
+          CONFIG_DEFAULT_libustream-openssl=y
+
+
           EOF
           # LuCI Themes:
           cat >> .config <<EOF
