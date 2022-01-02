@@ -8,6 +8,10 @@ svn co https://github.com/DHDAXCW/packages/branches/ok/admin/netdata ./feeds/pac
 mkdir package/community
 pushd package/community
 
+# Add luci-app-netdata
+rm -rf ../lean/luci-app-netdata
+git clone https://github.com/sirpdboy/luci-app-netdata
+
 # Add luci-app-ssr-plus
 git clone --depth=1 https://github.com/fw876/helloworld.git
 
@@ -23,6 +27,8 @@ git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.gi
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
 rm -rf ../lean/luci-theme-argon
+rm -rf ./luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+cp -f $GITHUB_WORKSPACE/pics/bg1.jpg luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 # Add jd-dailybonus
 rm -rf ../lean/luci-app-jd-dailybonus
