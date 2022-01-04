@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # fix netdata
-rm -rf ./feeds/packages/admin/netdata
-svn co https://github.com/DHDAXCW/packages/tree/master/admin/netdata ./feeds/packages/admin/netdata
+# rm -rf ./feeds/packages/admin/netdata
+# svn co https://github.com/DHDAXCW/packages/tree/master/admin/netdata ./feeds/packages/admin/netdata
 
 # Clone community packages to package/community
 mkdir package/community
