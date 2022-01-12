@@ -31,8 +31,8 @@ rm -rf ./luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 cp -f $GITHUB_WORKSPACE/pics/bg1.jpg luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 # Add jd-dailybonus
-rm -rf ../lean/luci-app-jd-dailybonus
-git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
+# rm -rf ../lean/luci-app-jd-dailybonus
+# git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
 popd
 
 # Modify default IP
