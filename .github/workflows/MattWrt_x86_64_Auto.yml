@@ -59,25 +59,11 @@ jobs:
        cd openwrt
        echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
        echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
-       cd package
-       rm -rf lean/luci-theme-argon
-       rm -rf lean/luci-app-argon-config
-       # rm -rf lean/luci-app-adbyby-plus
-       rm -rf lean/luci-app-uugamebooster
-       rm -rf lean/luci-app-qbittorrent
-       rm -rf lean/luci-app-xlnetacc
-       rm -rf lean/luci-app-jd-dailybonus
-       mkdir openwrt-packages
-       cd openwrt-packages
-       # git clone https://github.com/longcat99/long.git 包含了一些主题
-       git clone https://github.com/fw876/helloworld.git
-       git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
-       # git clone --depth 1 -b oaf-3.0.1 https://github.com/destan19/OpenAppFilter.git 应用过滤APP
-       # git clone https://github.com/jerrykuku/luci-app-vssr.git
-       # git clone https://github.com/lisaac/luci-app-dockerman.git
-       git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
-       git clone https://github.com/jerrykuku/luci-app-argon-config.git
-       
+       cd feeds
+       rm -rf luci/themes/luci-theme-argon
+       git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci/themes
+       git clone https://github.com/jerrykuku/luci-app-argon-config.git luci/applications
+    
     - name: Update Feeds
       run: | 
        cd $OPENWRTROOT
