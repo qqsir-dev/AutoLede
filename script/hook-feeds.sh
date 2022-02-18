@@ -10,10 +10,10 @@
 # popd
 
 # Set to local feeds
-pushd customfeeds/packages
+pushd feeds/packages
 export packages_feed="$(pwd)"
 popd
-pushd customfeeds/luci
+pushd feeds/luci
 export luci_feed="$(pwd)"
 popd
 sed -i '/src-git packages/d' feeds.conf.default
