@@ -60,6 +60,7 @@ jobs:
        echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
        echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
        cd feeds
+       git clone https://github.com/fw876/helloworld.git
        rm -rf luci/themes/luci-theme-argon
        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci/themes
        git clone https://github.com/jerrykuku/luci-app-argon-config.git luci/applications
