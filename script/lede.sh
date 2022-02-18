@@ -39,7 +39,7 @@ git clone https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/appl
 # Add jd-dailybonus
 # rm -rf ../lean/luci-app-jd-dailybonus
 # git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
-popd
+# popd
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_generate
