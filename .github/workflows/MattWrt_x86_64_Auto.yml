@@ -61,12 +61,12 @@ jobs:
        echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
        sed -i "/helloworld/d" "feeds.conf.default"
        echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
-       mkdir feeds/luci
+       mkdir -p feeds/luci
        git clone --depth=1 https://github.com/coolsnowwolf/luci feeds/luci
        
-       rm -rf luci/themes/luci-theme-argon
-       git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci/themes
-       git clone https://github.com/jerrykuku/luci-app-argon-config.git luci/applications
+       rm -rf feeds/luci/themes/luci-theme-argon
+       git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes
+       git clone https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/applications
     
     - name: Update Feeds
       run: | 
