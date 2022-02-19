@@ -23,7 +23,7 @@ cp -f $GITHUB_WORKSPACE/pics/bg1.jpg feeds/luci/themes/luci-theme-argon/htdocs/l
 # Add jd-dailybonus
 # rm -rf feeds/luci/applications/luci-app-jd-dailybonus
 # git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
-popd
+# popd
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_generate
