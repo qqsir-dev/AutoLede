@@ -1,5 +1,5 @@
 #!/bin/bash
-pushd customfeeds
+# pushd customfeeds
 
 # Add luci-app-netdata
 # rm -rf packages/admin/netdata
