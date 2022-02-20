@@ -23,6 +23,10 @@
 sed -i '/helloworld/d' feeds.conf.default
 echo "src-git helloworld https://github.com/fw876/helloworld.git" >> feeds.conf.default
 
+# Add luci-app-unblockneteasemusic
+rm -rf feeds/luci/applications/luci-app-unblockmusic
+git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git feeds/luci/applications/luci-app-unblockmusic
+
 # Add luci-theme-argon
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon feeds/luci/themes/luci-theme-argon
