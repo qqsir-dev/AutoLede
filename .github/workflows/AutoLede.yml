@@ -77,11 +77,9 @@ jobs:
         # mkdir feeds
         # git clone --depth=1 https://github.com/coolsnowwolf/packages feeds/packages
         # git clone --depth=1 https://github.com/coolsnowwolf/luci feeds/luci
-        # chmod +x ../script/*.sh
-        # ../script/hook-feeds.sh
-        sed -i '/helloworld/d' feeds.conf.default
-        echo "src-git helloworld https://github.com/fw876/helloworld.git" >> feeds.conf.default
-        ./scripts/feeds update -a
+        chmod +x ../script/*.sh
+        ../script/hook-feeds.sh
+        
     - name: MOD index file
       run: |
          cd $OPENWRTROOT/package/lean/autocore/files/x86
