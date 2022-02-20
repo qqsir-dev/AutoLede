@@ -18,7 +18,7 @@ git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
 rm -rf ./luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 cp -f $GITHUB_WORKSPACE/pics/bg1.jpg luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-# popd
+popd
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_generate
