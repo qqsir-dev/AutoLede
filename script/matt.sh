@@ -21,7 +21,7 @@ cp -f $GITHUB_WORKSPACE/pics/bg1.jpg luci-theme-argon/htdocs/luci-static/argon/i
 popd
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.199.1/g' package/base-files/files/bin/config_generate
 sed -i '/uci commit system/i\uci set system.@system[0].hostname='TimWrt'' package/lean/default-settings/files/zzz-default-settings
 sed -i "s/OpenWrt /YG @ TimWrt /g" package/lean/default-settings/files/zzz-default-settings
 # find package/*/ feeds/*/ -maxdepth 6 -path "*luci-app-smartdns/luasrc/controller/smartdns.lua" | xargs -i sed -i 's/\"SmartDNS\")\, 4/\"SmartDNS\")\, 3/g' {} 
@@ -29,8 +29,8 @@ sed -i "s/OpenWrt /YG @ TimWrt /g" package/lean/default-settings/files/zzz-defau
 # sed -i 's/5.10/5.15/g' target/linux/x86/Makefile
 
 # Network Configuration
-sed -i "/exit/iuci set network.lan.gateway=\'192.168.199.1\'\nuci set network.lan.dns=\'119.29.29.29 223.5.5.5\'\nuci commit network\nuci set dhcp.lan.ignore=\'1\'\nuci set dhcp.lan.dhcpv6=\'disabled\'\nuci commit dhcp\n" package/lean/default-settings/files/zzz-default-settings
-        
+sed -i "/exit/iuci set network.wan.ifname=\'eth3\'\nuci set network.lan.dns=\'223.5.5.5 119.29.29.29\'\nuci commit network\nuci set dhcp.lan.ignore=\'0\'\nuci set dhcp.lan.dhcpv6=\'disabled\'\nuci set dhcp.lan.start=\'50\'\nuci set dhcp.lan.limit=\'100\'\nuci set dhcp.lan.ra_management=\'1\'\nuci commit dhcp\n" package/lean/default-settings/files/zzz-default-settings
+
 # nlbwmon netlink uffer size
 sed -i '1s/$/&\nnet.core.wmem_max=16777216\nnet.core.rmem_max=16777216/' package/base-files/files/etc/sysctl.conf
 # sed -i "/exit/iuci set nlbwmon.@nlbwmon[0].netlink_buffer_size=\'10485760\'\nuci set nlbwmon.@nlbwmon[0].commit_interval=\'2h\'\nuci commit nlbwmon\n" package/lean/default-settings/files/zzz-default-settings
