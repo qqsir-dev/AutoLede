@@ -5,7 +5,7 @@
 # Author: qqsir
 #=================================================
 
-name: MattWrt_x86_64_Auto
+name: MattWrt_x86_V1_Auto
 
 on:
   workflow_dispatch:
@@ -327,6 +327,7 @@ jobs:
       run: | 
         cd $OPENWRTROOT
         make defconfig
+        cat .config
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
