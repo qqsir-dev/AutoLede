@@ -107,131 +107,6 @@ jobs:
           cat >> .config <<EOF
           CONFIG_EFI_IMAGES=y
           EOF
-          # IPv6 Support:
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
-          CONFIG_PACKAGE_ipv6helper=y
-          CONFIG_PACKAGE_fullconenat=y
-          EOF
-          # Multi-file system support:
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_kmod-fs-exfat=y
-          CONFIG_PACKAGE_kmod-fs-ext4=y
-          CONFIG_PACKAGE_kmod-fs-cifs=y
-          CONFIG_PACKAGE_kmod-fs-antfs=y
-          CONFIG_PACKAGE_kmod-fs-btrfs=y
-          CONFIG_PACKAGE_kmod-fs-vfat=y
-          CONFIG_PACKAGE_kmod-fs-f2fs=y
-          CONFIG_PACKAGE_kmod-fs-nfs=y
-          CONFIG_PACKAGE_kmod-fs-nfs-common=y
-          CONFIG_PACKAGE_kmod-fs-nfs-common-rpcsec=y
-          CONFIG_PACKAGE_kmod-fs-nfs-v3=y
-          CONFIG_PACKAGE_kmod-fs-nfs-v4=y
-          CONFIG_PACKAGE_kmod-fs-nfsd=y
-          CONFIG_PACKAGE_kmod-fs-squashfs=y
-          EOF
-          # USB Devices Support:
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_kmod-usb-ehci=y
-          CONFIG_PACKAGE_kmod-usb-net-aqc111=y
-          CONFIG_PACKAGE_kmod-usb-net-pl=y
-          CONFIG_PACKAGE_kmod-usb-ohci=y
-          CONFIG_PACKAGE_kmod-usb-ohci-pci=y
-          CONFIG_PACKAGE_kmod-usb-printer=y
-          CONFIG_PACKAGE_kmod-usb-serial=y
-          CONFIG_PACKAGE_kmod-usb-uhci=y
-          CONFIG_PACKAGE_kmod-usb-wdm=y
-          CONFIG_PACKAGE_kmod-usb2=y
-          CONFIG_PACKAGE_kmod-usb2-pci=y
-          CONFIG_PACKAGE_kmod-usb3=y
-          EOF
-          # Load Drivers from local
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_kmod-hwmon-core=y
-          EOF
-          # Network Card Drivers:
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_kmod-3c59x=y
-          CONFIG_PACKAGE_kmod-alx=y
-          CONFIG_PACKAGE_kmod-atl1=y
-          CONFIG_PACKAGE_kmod-atl1c=y
-          CONFIG_PACKAGE_kmod-atl1e=y
-          CONFIG_PACKAGE_kmod-atl2=y
-          CONFIG_PACKAGE_kmod-b44=y
-          CONFIG_PACKAGE_kmod-be2net=y
-          CONFIG_PACKAGE_kmod-bnx2x=y
-          CONFIG_PACKAGE_kmod-dm9000=y
-          CONFIG_PACKAGE_kmod-dummy=y
-          CONFIG_PACKAGE_kmod-e100=y
-          CONFIG_PACKAGE_kmod-et131x=y
-          CONFIG_PACKAGE_kmod-ethoc=y
-          CONFIG_PACKAGE_kmod-gigaset=y
-          CONFIG_PACKAGE_kmod-hfcmulti=y
-          CONFIG_PACKAGE_kmod-hfcpci=y
-          CONFIG_PACKAGE_kmod-i40evf=y
-          CONFIG_PACKAGE_kmod-iavf=y
-          CONFIG_PACKAGE_kmod-ifb=y
-          CONFIG_PACKAGE_kmod-ixgbevf=y
-          CONFIG_PACKAGE_kmod-mdio-gpio=y
-          CONFIG_PACKAGE_kmod-natsemi=y
-          CONFIG_PACKAGE_kmod-ne2k-pci=y
-          CONFIG_PACKAGE_kmod-niu=y
-          CONFIG_PACKAGE_kmod-of-mdio=y
-          CONFIG_PACKAGE_kmod-phy-bcm84881=y
-          CONFIG_PACKAGE_kmod-phy-broadcom=y
-          CONFIG_PACKAGE_kmod-phy-realtek=y
-          CONFIG_PACKAGE_kmod-phylink=y
-          CONFIG_PACKAGE_kmod-r6040=y
-          CONFIG_PACKAGE_kmod-r8169=y
-          CONFIG_PACKAGE_kmod-sfc=y
-          CONFIG_PACKAGE_kmod-sfc-falcon=y
-          CONFIG_PACKAGE_kmod-sfp=y
-          CONFIG_PACKAGE_kmod-siit=y
-          CONFIG_PACKAGE_kmod-sis190=y
-          CONFIG_PACKAGE_kmod-sis900=y
-          CONFIG_PACKAGE_kmod-skge=y
-          CONFIG_PACKAGE_kmod-sky2=y
-          CONFIG_PACKAGE_kmod-solos-pci=y
-          CONFIG_PACKAGE_kmod-spi-ks8995=y
-          CONFIG_PACKAGE_kmod-swconfig=y
-          CONFIG_PACKAGE_kmod-switch-bcm53xx=y
-          CONFIG_PACKAGE_kmod-switch-bcm53xx-mdio=y
-          CONFIG_PACKAGE_kmod-switch-ip17xx=y
-          CONFIG_PACKAGE_kmod-switch-mvsw61xx=y
-          CONFIG_PACKAGE_kmod-switch-rtl8306=y
-          CONFIG_PACKAGE_kmod-switch-rtl8366-smi=y
-          CONFIG_PACKAGE_kmod-switch-rtl8366rb=y
-          CONFIG_PACKAGE_kmod-switch-rtl8366s=y
-          CONFIG_PACKAGE_kmod-switch-rtl8367b=y
-          CONFIG_PACKAGE_kmod-tg3=y
-          CONFIG_PACKAGE_kmod-usb-net-rtl8152=y
-          CONFIG_PACKAGE_kmod-via-rhine=y
-          CONFIG_PACKAGE_kmod-via-velocity=y
-          CONFIG_PACKAGE_kmod-sched-connmark=y
-          CONFIG_PACKAGE_kmod-sched=y
-          CONFIG_PACKAGE_kmod-ipt-hashlimit=y
-          EOF
-          # WiFi Drivers:
-          cat >> .config <<EOF
-          
-          CONFIG_BRCMFMAC_PCIE=y
-          CONFIG_BRCMFMAC_USB=y
-          CONFIG_DRIVER_11AX_SUPPORT=y
-          CONFIG_DRIVER_WEXT_SUPPORT=y
-          CONFIG_PACKAGE_ath10k-board-qca988x=y
-          CONFIG_PACKAGE_ath10k-board-qca99x0=y
-          CONFIG_PACKAGE_ath10k-firmware-qca9888=y
-          CONFIG_PACKAGE_ath10k-firmware-qca9888-ct=y
-          CONFIG_PACKAGE_ath10k-firmware-qca9888-ct-full-htt=y
-          CONFIG_PACKAGE_ath10k-firmware-qca9888-ct-htt=y
-          CONFIG_PACKAGE_ath10k-firmware-qca988x=y
-          CONFIG_PACKAGE_ath10k-firmware-qca988x-ct=y
-          CONFIG_PACKAGE_ath10k-firmware-qca988x-ct-full-htt=y
-          CONFIG_PACKAGE_ath10k-firmware-qca99x0=y
-          CONFIG_PACKAGE_ath10k-firmware-qca99x0-ct=y 
-          CONFIG_PACKAGE_ath10k-firmware-qca99x0-ct-full-htt=y
-          CONFIG_PACKAGE_ath10k-firmware-qca99x0-ct-htt=y
-          EOF
           # LuCI Plugins:
           cat >> .config <<EOF
           CONFIG_LUCI_LANG_en=y
@@ -395,30 +270,10 @@ jobs:
           # LuCI Themes:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-theme-argon=y
-          # CONFIG_PACKAGE_luci-theme-argon-lean=y
           CONFIG_PACKAGE_luci-theme-netgear=y
           CONFIG_PACKAGE_luci-theme-bootstrap=y
-          # CONFIG_PACKAGE_luci-theme-freifunk-generic=y
-          # CONFIG_PACKAGE_luci-theme-argon-leanimg=y
-          # CONFIG_PACKAGE_luci-theme-material=y
-          # CONFIG_PACKAGE_luci-theme-opentomcat=y
-          # CONFIG_PACKAGE_luci-theme-opentomato=y
-          # CONFIG_PACKAGE_luci-theme-opentopd=y
-          # CONFIG_PACKAGE_luci-theme-edge=y
-          # CONFIG_PACKAGE_luci-theme-infinityfreedom=y
-          EOF
-          # Software:
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_curl=y
-          CONFIG_PACKAGE_htop=y
-          CONFIG_PACKAGE_iperf3=y
-          CONFIG_PACKAGE_nano=y
-          CONFIG_PACKAGE_screen=y
-          CONFIG_PACKAGE_tree=y
-          CONFIG_PACKAGE_vim-fuller=y
-          CONFIG_PACKAGE_wget=y
-          CONFIG_PACKAGE_zsh=y
-          CONFIG_PACKAGE_cfdisk=y
+
+          CONFIG_PACKAGE_default-settings=y
           EOF
           sed -i 's/^[ \t]*//g' ./.config
           make defconfig
