@@ -5,7 +5,7 @@
 # Author: qqsir
 #=================================================
 
-name: Autolede_MattWrt-x86-64
+name: Autolede_MattWrt_x86_64
 
 on:
   repository_dispatch:
@@ -18,7 +18,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: config/lede.config
+  CONFIG_FILE: config/matt.config
   DIY_SH: script/matt.sh
   # IPV6MOD_IN_FIRMWARE: false
   # KMODS_IN_FIRMWARE: true
