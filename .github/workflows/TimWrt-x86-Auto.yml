@@ -5,7 +5,7 @@
 # Author: qqsir
 #=================================================
 
-name: Autolede_TimWrt-x86-64
+name: Autolede_TimWrt_x86_64
 
 on:
   repository_dispatch:
