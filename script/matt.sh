@@ -29,7 +29,7 @@ sed -i "s/OpenWrt /YG @ MattWrt /g" package/lean/default-settings/files/zzz-defa
 # sed -i 's/5.10/5.15/g' target/linux/x86/Makefile
 
 # Network Configuration
-sed -i "/exit/iuci set network.wan.ifname=\'eth2\'\nuci set network.lan.netmask=\'255.255.255.0\'\nuci set network.lan.dns=\'119.29.29.29 223.5.5.5\'\nuci set network.lan.ifname=\'eth0 eth1 eth3\'\nuci commit network\nuci set dhcp.lan.ignore=\'0\'\nuci set dhcp.lan.dhcpv6=\'disabled\'\nuci set dhcp.lan.start=\'50\'\nuci set dhcp.lan.limit=\'100\'\nuci set dhcp.lan.ra_management=\'1\'\nuci commit dhcp\n" package/lean/default-settings/files/zzz-default-settings
+sed -i "/exit/iuci set network.wan.ifname=\'eth2\'\nuci set network.wan6.ifname=\'eth2\'\nuci set network.lan.netmask=\'255.255.255.0\'\nuci set network.lan.dns=\'119.29.29.29 223.5.5.5\'\nuci set network.lan.ifname=\'eth0 eth1 eth3\'\nuci commit network\nuci set dhcp.lan.ignore=\'0\'\nuci set dhcp.lan.dhcpv6=\'disabled\'\nuci set dhcp.lan.start=\'50\'\nuci set dhcp.lan.limit=\'100\'\nuci set dhcp.lan.ra_management=\'1\'\nuci commit dhcp\n" package/lean/default-settings/files/zzz-default-settings
 
 # nlbwmon netlink uffer size
 sed -i '1s/$/&\nnet.core.wmem_max=16777216\nnet.core.rmem_max=16777216/' package/base-files/files/etc/sysctl.conf
