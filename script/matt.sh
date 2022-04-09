@@ -32,7 +32,7 @@ sed -i "s/OpenWrt /YG @ MattWrt /g" package/lean/default-settings/files/zzz-defa
 sed -i "/exit/iuci set network.wan.ifname=\'eth2\'\nuci set network.wan6.ifname=\'eth2\'\nuci set network.lan.netmask=\'255.255.255.0\'\nuci set network.lan.dns=\'119.29.29.29 223.5.5.5\'\nuci set network.lan.ifname=\'eth0 eth1 eth3\'\nuci commit network\nuci set dhcp.lan.ignore=\'0\'\nuci set dhcp.lan.dhcpv6=\'disabled\'\nuci set dhcp.lan.start=\'50\'\nuci set dhcp.lan.limit=\'100\'\nuci set dhcp.lan.ra_management=\'1\'\nuci commit dhcp\n" package/lean/default-settings/files/zzz-default-settings
 
 # nlbwmon netlink uffer size
-sed -i '1s/$/&\nnet.core.wmem_max=16777216\nnet.core.rmem_max=16777216/' package/base-files/files/etc/sysctl.conf
+# sed -i '1s/$/&\nnet.core.wmem_max=16777216\nnet.core.rmem_max=16777216/' package/base-files/files/etc/sysctl.conf
 # sed -i "/exit/iuci set nlbwmon.@nlbwmon[0].netlink_buffer_size=\'10485760\'\nuci set nlbwmon.@nlbwmon[0].commit_interval=\'2h\'\nuci commit nlbwmon\n" package/lean/default-settings/files/zzz-default-settings
         
 # Set Default Language - English
