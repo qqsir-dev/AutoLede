@@ -1,3 +1,4 @@
+# <a href="https://nexuscloud.ch/aff.php?aff=5">我用的机场，性价比目前最高，速度很快！</a>
 ## For X86-64 Platform, Automatically update plug-ins and kernel version.
 # 👉If you want to use this firmware, Please strictly abide by the relevant national laws and regulations on Internet use, and do not violate the national laws and regulations!👈
 
