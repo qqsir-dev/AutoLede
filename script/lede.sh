@@ -41,6 +41,9 @@ sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-file
 # Modify ShadowSocksR Plus+ Menu order
 find package/*/ feeds/*/ -maxdepth 6 -path "*helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua" | xargs -i sed -i 's/\"ShadowSocksR Plus+\")\, 10/\"ShadowSocksR Plus+\")\, 0/g' {}
 
+# Add zhipin.com to ssr white list
+sed -i '$a\zhipin.com' feeds/helloworld/luci-app-ssr-plus/root/etc/ssrplus/white.list
+
 # Custom configs
 # git am $GITHUB_WORKSPACE/patches/lean/*.patch
 # git am $GITHUB_WORKSPACE/patches/*.patch
