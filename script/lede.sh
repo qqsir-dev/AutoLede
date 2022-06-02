@@ -9,8 +9,8 @@ mkdir package/community
 pushd package/community
 
 # Add luci-app-unblockneteasemusic
-rm -rf ../../feeds/luci/applications/luci-app-unblockmusic
-git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git
+# rm -rf ../../feeds/luci/applications/luci-app-unblockmusic
+# git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git
 
 # Add luci-theme-argon
 rm -rf ../../feeds/luci/themes/luci-theme-argon
