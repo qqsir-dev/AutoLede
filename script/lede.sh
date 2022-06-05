@@ -33,6 +33,7 @@ sed -i "/exit/iuci set network.lan.gateway=\'192.168.50.1\'\nuci set network.lan
 
 # turn on turboacc bbr_cca
 sed -i $'s/option bbr_cca \'0\'/option bbr_cca \'1\'/g' feeds/luci/applications/luci-app-turboacc/root/etc/config/turboacc
+sed -i $'s/option sfe_flow \'1\'/option sfe_flow \'0\'/g' feeds/luci/applications/luci-app-turboacc/root/etc/config/turboacc
 
 # nlbwmon netlink uffer size
 # sed -i '1s/$/&\nnet.core.wmem_max=16777216\nnet.core.rmem_max=16777216/' package/base-files/files/etc/sysctl.conf
