@@ -25,8 +25,8 @@ sed -i 's/192.168.1.1/192.168.199.1/g' package/base-files/files/bin/config_gener
 sed -i '/uci commit system/i\uci set system.@system[0].hostname='MattWrt'' package/lean/default-settings/files/zzz-default-settings
 sed -i "s/OpenWrt /YG @ MattWrt /g" package/lean/default-settings/files/zzz-default-settings
 # find package/*/ feeds/*/ -maxdepth 6 -path "*luci-app-smartdns/luasrc/controller/smartdns.lua" | xargs -i sed -i 's/\"SmartDNS\")\, 4/\"SmartDNS\")\, 3/g' {} 
-# Test kernel 5.15
-# sed -i 's/5.10/5.15/g' target/linux/x86/Makefile
+# Test kernel 5.18
+# sed -i 's/5.15/5.18/g' target/linux/x86/Makefile
 
 # Network Configuration
 sed -i "/exit/iuci set network.wan.ifname=\'eth2\'\nuci set network.wan6.ifname=\'eth2\'\nuci set network.lan.netmask=\'255.255.255.0\'\nuci set network.lan.dns=\'119.29.29.29 223.5.5.5\'\nuci set network.lan.ifname=\'eth0 eth1 eth3\'\nuci commit network\nuci set dhcp.lan.ignore=\'0\'\nuci set dhcp.lan.dhcpv6=\'disabled\'\nuci set dhcp.lan.start=\'50\'\nuci set dhcp.lan.limit=\'100\'\nuci set dhcp.lan.ra_management=\'1\'\nuci commit dhcp\n" package/lean/default-settings/files/zzz-default-settings
