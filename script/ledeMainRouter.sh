@@ -25,7 +25,7 @@ sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_genera
 sed -i '/uci commit system/i\uci set system.@system[0].hostname='TimWrt'' package/lean/default-settings/files/zzz-default-settings
 sed -i "s/OpenWrt /YG @ TimWrt /g" package/lean/default-settings/files/zzz-default-settings
 # find package/*/ feeds/*/ -maxdepth 6 -path "*luci-app-smartdns/luasrc/controller/smartdns.lua" | xargs -i sed -i 's/\"SmartDNS\")\, 4/\"SmartDNS\")\, 3/g' {} 
-# Test kernel 5.18
+# Test kernel 5.19
 sed -i 's/5.15/5.19/g' target/linux/x86/Makefile
 
 # Network Configuration
