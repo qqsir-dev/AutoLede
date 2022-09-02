@@ -5,7 +5,7 @@
 # Author: qqsir
 #=================================================
 
-name: Autolede_TimWrt_x86_MainRouter
+name: Autolede_TimWrt_x86_R4S
 
 on:
   repository_dispatch:
@@ -19,7 +19,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   CONFIG_FILE: config/R4S.config
-  DIY_SH: script/ARM.sh
+  DIY_SH: script/R4S.sh
   # IPV6MOD_IN_FIRMWARE: false
   # KMODS_IN_FIRMWARE: true
   UPLOAD_WETRANSFER: false
