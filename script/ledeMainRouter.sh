@@ -30,6 +30,9 @@ sed -i "/exit/iuci set network.wan.ifname=\'eth0\'\nuci set network.wan6.ifname=
 # Set Default Language - English
 sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-files/files/etc/rc.local
 
+# Set Nginx client_max_body_size 2048M
+sed -i 's/128M/2048M/g' /etc/nginx/uci.conf
+
 # Modify ShadowSocksR Plus+ Menu order
 find package/*/ feeds/*/ -maxdepth 6 -path "*helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua" | xargs -i sed -i 's/\"ShadowSocksR Plus+\")\, 10/\"ShadowSocksR Plus+\")\, 0/g' {}
 
