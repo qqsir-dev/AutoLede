@@ -5,7 +5,7 @@
 # Author: qqsir
 #=================================================
 
-name: Autolede_TimWrt_x86_R4S
+name: Autolede_TimWrt_ARM_R4S
 
 on:
   repository_dispatch:
