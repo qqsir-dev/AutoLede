@@ -72,10 +72,6 @@ jobs:
         chmod +x ../script/*.sh
         ../script/hook-feeds.sh
         
-    - name: MOD index file
-      run: |
-         cd $OPENWRTROOT/package/lean/autocore/files/x86
-         sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Project URL %></td><td><a href="https://github.com/qqsir-dev/AutoLede" target="_blank"><%:Firmware Github%></a></td></tr>' index.htm
     - name: Install Feeds
       run: |
         cd $OPENWRTROOT
