@@ -215,9 +215,8 @@ jobs:
         run: |
           echo "::set-output name=release_tag::$(date +"%Y.%m.%d")-Lean4"
           echo "::set-output name=release_date::$(date +"%Y.%m.%d")"
-          touch release.txt
-          [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-          [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+          touch release.txt          
+          echo "R4S专用路由(R4S Firmware ONLY)固件" >> release.txt
           echo "::set-output name=status::success"
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
