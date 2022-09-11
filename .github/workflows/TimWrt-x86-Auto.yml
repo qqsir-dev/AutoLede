@@ -139,13 +139,6 @@ jobs:
         cd $OPENWRTROOT
         make package/install -j$(nproc) || make package/install -j1 V=s
         make target/install -j$(nproc) || make target/install -j1 V=s
-        pushd bin/targets/x86/64
-        rm -rf openwrt-x86-64-generic-kernel.bin
-        rm -rf openwrt-x86-64-generic-rootfs.tar.gz
-        rm -rf openwrt-x86-64-generic.manifest
-        mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz TimWrt-x86-64-Auto-squashfs-efi.img.gz
-        mv openwrt-x86-64-generic-squashfs-combined-efi.vmdk TimWrt-x86-64-Auto-generic-squashfs-combined-efi.vmdk
-        popd
         make checksum
         echo "::set-output name=GENERATE_STATUS::success"
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
