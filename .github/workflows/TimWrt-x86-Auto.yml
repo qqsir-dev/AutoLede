@@ -47,10 +47,11 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo apt update -y 
+        sudo apt update -y
+        sudo apt full-upgrade -y
         sudo apt install -y python3 git-core curl qemu-utils
-        sudo apt autoremove --purge
-        sudo apt clean -y
+        sudo apt --purge autoremove
+        sudo apt clean
         sudo timedatectl set-timezone "$TZ"
     - name: Clone Source Code
       run: |
