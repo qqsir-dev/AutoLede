@@ -48,7 +48,7 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo -E apt-get update
-        
+        sudo -E apt-get upgrade
         sudo -E apt-get install python3 git-core curl qemu-utils
         sudo -E apt-get autoremove --purge
         sudo -E apt-get clean
