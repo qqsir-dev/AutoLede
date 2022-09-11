@@ -213,9 +213,8 @@ jobs:
         run: |
           echo "::set-output name=release_tag::$(date +"%Y.%m.%d")-Lean2"
           echo "::set-output name=release_date::$(date +"%Y.%m.%d")"
-          touch release.txt
-          [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-          [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+          touch release.txt          
+          echo "主路由(Main Router Mode Firmware)模式固件" >> release.txt
           echo "::set-output name=status::success"
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
