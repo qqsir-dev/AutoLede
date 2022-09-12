@@ -225,7 +225,8 @@ jobs:
           echo "::set-output name=release_tag::$(date +"%Y.%m.%d")-Lean4"
           echo "::set-output name=release_date::$(date +"%Y.%m.%d")"
           touch release.txt          
-          echo "r4s/r4se专用路由(r4s/r4se Firmware ONLY)固件" >> release.txt
+          echo "r4s/r4se专用路由(r4s/r4se Firmware ONLY)固件
+                IP: 192.158.50.1" >> release.txt
           echo "::set-output name=status::success"
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
