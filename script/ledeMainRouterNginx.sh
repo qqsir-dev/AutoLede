@@ -30,7 +30,7 @@ sed -i "/exit/iuci set network.wan.ifname=\'eth0\'\nuci set network.wan6.ifname=
 # sed -i $'s/option bbr_cca \'0\'/option bbr_cca \'1\'/g' feeds/luci/applications/luci-app-turboacc/root/etc/config/turboacc
 # sed -i $'s/option sfe_flow \'1\'/option sfe_flow \'0\'/g' feeds/luci/applications/luci-app-turboacc/root/etc/config/turboacc
 
-# Set Default Language - English
+# Set Default Language - English & Nginx client_max_body_size 2048M
 sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\nsed -i \"s/'128M'/'2048M'/g\" /etc/nginx/uci.conf" package/base-files/files/etc/rc.local
 
 # Set Nginx client_max_body_size 2048M
