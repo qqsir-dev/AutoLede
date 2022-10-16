@@ -19,7 +19,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   CONFIG_FILE: config/lede-nginx.config
-  DIY_SH: script/ledeMainRouter.sh
+  DIY_SH: script/ledeMainRouterNginx.sh
   # IPV6MOD_IN_FIRMWARE: false
   # KMODS_IN_FIRMWARE: true
   UPLOAD_WETRANSFER: false
