@@ -38,8 +38,7 @@ jobs:
       SUBTARGET: ${{ steps.compile.outputs.SUBTARGET }}
       FIRMWARE: ${{ steps.compile.outputs.FIRMWARE }}
       GENERATE_STATUS: ${{ steps.generate.outputs.GENERATE_STATUS }}
-runs:
-    using: "composite"    
+ 
     steps:
     - name: Checkout
       uses: actions/checkout@main
