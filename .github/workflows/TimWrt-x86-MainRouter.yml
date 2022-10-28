@@ -38,12 +38,6 @@ jobs:
       SUBTARGET: ${{ steps.compile.outputs.SUBTARGET }}
       FIRMWARE: ${{ steps.compile.outputs.FIRMWARE }}
       GENERATE_STATUS: ${{ steps.generate.outputs.GENERATE_STATUS }}
-
-runs:
-    using: 'node16'
-    pre: 'setup.js'
-    main: 'index.js'
-    post: 'cleanup.js'
     
     steps:
     - name: Checkout
