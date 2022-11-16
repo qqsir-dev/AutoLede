@@ -22,10 +22,10 @@ sed -i '/uci commit system/i\uci set system.@system[0].hostname='TimWrt'' packag
 sed -i "s/OpenWrt /YG @ TimWrt /g" package/lean/default-settings/files/zzz-default-settings
  
 # Test kernel 6.0
-# sed -i 's/5.15/6.0/g' target/linux/rockchip/Makefile
+sed -i 's/5.15/6.0/g' target/linux/rockchip/Makefile
 
 # Set Default Language - English
-sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-files/files/etc/rc.local
+# sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-files/files/etc/rc.local
 
 # Modify ShadowSocksR Plus+ Menu order
 find package/*/ feeds/*/ -maxdepth 6 -path "*helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua" | xargs -i sed -i 's/\"ShadowSocksR Plus+\")\, 10/\"ShadowSocksR Plus+\")\, 0/g' {}
