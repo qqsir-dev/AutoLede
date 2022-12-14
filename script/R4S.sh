@@ -24,8 +24,8 @@ sed -i 's/192.168.1.1/192.168.50.1/g' package/base-files/files/bin/config_genera
 sed -i '/uci commit system/i\uci set system.@system[0].hostname='TimWrt'' package/lean/default-settings/files/zzz-default-settings
 sed -i "s/OpenWrt /YG @ TimWrt /g" package/lean/default-settings/files/zzz-default-settings
  
-# Test kernel 6.0
-sed -i 's/5.15/6.0/g' target/linux/rockchip/Makefile
+# Test kernel 6.1
+sed -i 's/5.15/6.1/g' target/linux/rockchip/Makefile
 
 # Set Default Language - English
 # sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-files/files/etc/rc.local
