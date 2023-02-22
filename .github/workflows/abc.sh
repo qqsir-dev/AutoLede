@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Customize those three lines with your repository and credentials:
-REPO=https://api.github.com/repos/${GITHUB_REPOSITORY}
+REPO=https://github.com/qqsir-dev/AutoLede
 GITHUB_USER=${GITHUB_REPOSITORY%%/*}
 GITHUB_TOKEN=${1}
 
