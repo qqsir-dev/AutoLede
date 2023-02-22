@@ -4,7 +4,7 @@
 REPO=https://github.com/qqsir-dev/AutoLede
 GITHUB_USER=${GITHUB_REPOSITORY%%/*}
 GITHUB_TOKEN=${1}
-
+ 
 # Number of most recent versions to keep for each artifact:
 KEEP=4
 
