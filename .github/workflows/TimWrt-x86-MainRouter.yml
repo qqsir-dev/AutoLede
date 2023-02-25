@@ -46,6 +46,10 @@ jobs:
        run: |
           docker rmi `docker images -q`
           sudo -E rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
+          sudo apt-get purge grub\*
+          sudo apt-get install grub-efi
+          sudo apt-get autoremove
+          sudo update-grub
           sudo -E apt update
           sudo -E apt -y purge azure-cli* docker* ghc* zulu* llvm* firefox google* dotnet* powershell* openjdk* mysql* php* mongodb* dotnet* moby* snap*
           sudo -E apt -y full-upgrade
