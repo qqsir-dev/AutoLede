@@ -177,7 +177,7 @@ jobs:
           echo "GENERATE_STATUS=$(echo '${{needs.Build.outputs.GENERATE_STATUS}}')" >> $GITHUB_ENV
         
       - name: Download Bin Folder
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         if: env.GENERATE_STATUS == 'success'
         with:
           name: bin-archive
