@@ -184,7 +184,7 @@ jobs:
           echo "GENERATE_STATUS=$(echo '${{needs.Build.outputs.GENERATE_STATUS}}')" >> $GITHUB_ENV
         
       - name: Download Bin Folder
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         if: env.GENERATE_STATUS == 'success'
         with:
           name: bin-archive
@@ -246,22 +246,23 @@ jobs:
           files: ${{ env.FIRMWARE }}/*
 
       - name: Delete workflow runs
-        uses: GitRML/delete-workflow-runs@main
+        uses: Mattraks/delete-workflow-runs@v2
         with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
           retain_days: 1
           keep_minimum_runs: 1
 
       - name: Remove old Releases
-        uses: dev-drprasad/delete-older-releases@v0.1.0
+        uses: freenet-actions/delete-old-releases@v1
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
         with:
-          keep_latest: 9
-          delete_tags: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # prefix: 'TimWrt-x86'  # Delete all releases starting with "TimWrt-x86".
+          max-age: 'P2W'      # Delete all releases older than one week.
+          token: '${{ github.token }}'
 
       - name: Delete Artifacts
-        uses: geekyeggo/delete-artifact@v1
+        uses: geekyeggo/delete-artifact@v2
         with:
           name: |
             bin-archive
