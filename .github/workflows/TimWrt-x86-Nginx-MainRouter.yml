@@ -240,12 +240,13 @@ jobs:
           keep_minimum_runs: 1
 
       - name: Remove old Releases
-        uses: freenet-actions/delete-old-releases@v1
+        uses: dev-drprasad/delete-older-releases@v0.2.1
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
         with:
-          # prefix: 'TimWrt-x86'  # Delete all releases starting with "TimWrt-x86".
-          max-age: 'P2W'      # Delete all releases older than one week.
-          token: '${{ github.token }}'
+            keep_latest: 9
+            delete_tags: true
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v2
