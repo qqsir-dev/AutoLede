@@ -224,7 +224,7 @@ jobs:
           echo "release_tag=$(date +"%Y.%m.%d")-Lean5" >> $GITHUB_OUTPUT
           echo "release_date=$(date +"%Y.%m.%d")" >> $GITHUB_OUTPUT
           touch release.txt          
-          echo "主路由Nignx+SSL)模式固件" >> release.txt
+          echo "主路由Nignx+SSL模式固件" >> release.txt
           echo "status=success" >> $GITHUB_OUTPUT
           
       - name: Upload firmware to release
