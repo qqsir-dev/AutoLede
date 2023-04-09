@@ -34,7 +34,7 @@ sed -i "/exit/iuci set network.wan.ifname=\'eth0\'\nuci set network.wan6.ifname=
 # CHG Netdata support SSL
 # sed -i 's/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c +libopenssl/g' feeds/packages/admin/netdata/Makefile
 # sed -i 's/disable-https/enable-https/g' feeds/packages/admin/netdata/Makefile
-# sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n        SSL key = /etc/netdata/ssl/cert.key\n' feeds/packages/admin/netdata/files/netdata.conf
+# sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n        SSL key = /etc/netdata/ssl/key.pem\n' feeds/packages/admin/netdata/files/netdata.conf
 # sed -i 's/http/https/g' package/feeds/luci/luci-app-netdata/luasrc/view/netdata/netdata.htm
 
 # uhttpd cert
