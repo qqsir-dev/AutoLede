@@ -41,7 +41,7 @@ sed -i 's/http/https/g' package/feeds/luci/luci-app-netdata/luasrc/view/netdata/
 sed -i 's/uhttpd.crt/uhttpd.pem/g' package/network/services/uhttpd/files/uhttpd.config
 
 # TTYD Config
-sed -i "/command/a\        option ssl '1'\n        option ssl_cert /etc/uhttpd.crt\n        option ssl_key /etc/uhttpd.key" feeds/packages/utils/ttyd/files/ttyd.config
+sed -i "/command/a\        option ssl '1'\n        option ssl_cert /etc/uhttpd.pem\n        option ssl_key /etc/uhttpd.key" feeds/packages/utils/ttyd/files/ttyd.config
 
 # turn on turboacc bbr_cca
 # sed -i $'s/option bbr_cca \'0\'/option bbr_cca \'1\'/g' feeds/luci/applications/luci-app-turboacc/root/etc/config/turboacc
