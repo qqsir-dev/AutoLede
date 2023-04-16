@@ -38,7 +38,10 @@ sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n     
 sed -i 's/http/https/g' package/feeds/luci/luci-app-netdata/luasrc/view/netdata/netdata.htm
 
 # uhttpd cert
-# sed -i 's/uhttpd.crt/uhttpd.pem/g' package/network/services/uhttpd/files/uhttpd.config
+sed -i 's/uhttpd.crt/uhttpd.pem/g' package/network/services/uhttpd/files/uhttpd.config
+
+# TTYD Config
+sed -i "/command/a\        option ssl '1'\n        option ssl_cert /etc/uhttpd.crt\n        option ssl_key /etc/uhttpd.key" feeds/packages/utils/ttyd/files/ttyd.config
 
 # turn on turboacc bbr_cca
 # sed -i $'s/option bbr_cca \'0\'/option bbr_cca \'1\'/g' feeds/luci/applications/luci-app-turboacc/root/etc/config/turboacc
