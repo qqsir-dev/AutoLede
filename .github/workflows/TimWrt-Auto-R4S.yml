@@ -39,17 +39,34 @@ jobs:
       GENERATE_STATUS: ${{ steps.generate.outputs.GENERATE_STATUS }}
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+     - name: Space cleanup and Initialization environment
+       env:
+         DEBIAN_FRONTEND: noninteractive
+       run: |
+          docker rmi `docker images -q`
+          sudo -E rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
+          sudo -E apt update
+          sudo -E apt -y purge azure-cli* docker* ghc* zulu* llvm* firefox google* dotnet* powershell* openjdk* mysql* php* mongodb* dotnet* moby* snap*
+          sudo -E apt-mark hold grub-efi-amd64-signed grub-efi-amd64-bin
+          sudo -E apt -y full-upgrade
+          sudo -E apt -y install ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+          sudo -E systemctl daemon-reload
+          sudo -E apt -y autoremove --purge
+          sudo -E apt clean
+          sudo -E timedatectl set-timezone "Asia/Shanghai"
+          df -hT
+    
+     - name: Checkout
+       uses: actions/checkout@v3
 
-    - name: Clone Source Code
-      run: |
+     - name: Clone Source Code
+       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
 
-    - name: Update Feeds
-      id: update
-      run: |
+     - name: Update Feeds
+       id: update
+       run: |
         cd openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "OPENWRTROOT=$(echo $PWD)" >> $GITHUB_OUTPUT
@@ -59,17 +76,17 @@ jobs:
         chmod +x ../script/*.sh
         ../script/hook-feeds.sh
     
-    - name: MOD index file
-      run: |
+     - name: MOD index file
+       run: |
          cd $OPENWRTROOT/package/lean/autocore/files/arm
          sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Project URL %></td><td><a href="https://github.com/qqsir-dev/AutoLede" target="_blank"><%:Firmware Github%></a></td></tr>' index.htm
     
-    - name: Install Feeds
-      run: |
+     - name: Install Feeds
+       run: |
         cd $OPENWRTROOT
         ./scripts/feeds install -a
-    - name: Load Custom Configuration
-      run: |
+     - name: Load Custom Configuration
+       run: |
         [ -e files ] && mv files $OPENWRTROOT/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRTROOT/.config
         chmod +x script/*.sh
@@ -77,9 +94,9 @@ jobs:
         ../$DIY_SH
         
         make defconfig
-    - name: Download Package
-      id: package
-      run: |
+     - name: Download Package
+       id: package
+       run: |
         cd $OPENWRTROOT
         # if "$KMODS_IN_FIRMWARE" = 'true'
         # then
@@ -91,9 +108,9 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
   
-    - name: Compile Packages
-      id: compile
-      run: |
+     - name: Compile Packages
+       id: compile
+       run: |
         cd $OPENWRTROOT
         echo -e "$(nproc) thread compile"
         make tools/compile -j$(nproc) || make tools/compile -j1 V=s
@@ -118,10 +135,10 @@ jobs:
         echo "FIRMWARE=$(echo $PWD)" >> $GITHUB_OUTPUT
         echo "COMPILE_STATUS=success" >> $GITHUB_OUTPUT
         
-    - name: Generate Firmware
-      if: steps.compile.outputs.COMPILE_STATUS == 'success'
-      id: generate
-      run: |
+     - name: Generate Firmware
+       if: steps.compile.outputs.COMPILE_STATUS == 'success'
+       id: generate
+       run: |
         cd $OPENWRTROOT
         make package/install -j$(nproc) || make package/install -j1 V=s
         make target/install -j$(nproc) || make target/install -j1 V=s
@@ -131,14 +148,14 @@ jobs:
 #        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
 #        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 #        echo "FILE_TIME=$(date "+%m/%d/%Y-%H:%M")" >> $GITHUB_ENV
-    - name: Check Disk Status
-      if: (!cancelled())
-      run: df -hT
+     - name: Check Disk Status
+       if: (!cancelled())
+       run: df -hT
       
-    - name: Upload Bin Folder
-      uses: actions/upload-artifact@main
-      if: steps.generate.outputs.GENERATE_STATUS == 'success'
-      with:
+     - name: Upload Bin Folder
+       uses: actions/upload-artifact@main
+       if: steps.generate.outputs.GENERATE_STATUS == 'success'
+       with:
         name: bin-archive
         path: openwrt/bin
         
