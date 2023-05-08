@@ -20,6 +20,9 @@ popd
 # Set BIOS Boot Partition to 1 MiB
 sed -i 's/256/1024/g' target/linux/x86/image/Makefile
 
+# Update ipt2socks hash
+sed -i 's/PKG_HASH:=.*/PKG_HASH:=5279eb1cb7555cf9292423cc9f672dc43e6e214b3411a6df26a6a1cfa59d88b7/g' package/luci-app-ssr-plus/ipt2socks/Makefile
+
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_generate
 sed -i '/uci commit system/i\uci set system.@system[0].hostname='TimWrt'' package/lean/default-settings/files/zzz-default-settings
