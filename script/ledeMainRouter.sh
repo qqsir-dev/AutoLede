@@ -25,6 +25,8 @@ pushd luci-app-openclash/tools/po2lmo
 make && sudo make install
 popd -0
 dirs -v
+popd
+dirs -v
 
 
 # Set BIOS Boot Partition to 1 MiB
