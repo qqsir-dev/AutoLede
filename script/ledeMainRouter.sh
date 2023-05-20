@@ -22,7 +22,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
 # 编译 po2lmo (如果有po2lmo可跳过)
 pushd luci-app-openclash/tools/po2lmo
 make && sudo make install
-popd +2
+popd -0
 
 # Set BIOS Boot Partition to 1 MiB
 sed -i 's/256/1024/g' target/linux/x86/image/Makefile
