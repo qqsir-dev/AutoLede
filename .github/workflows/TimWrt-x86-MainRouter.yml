@@ -92,7 +92,8 @@ jobs:
         chmod +x script/*.sh
         cd $OPENWRTROOT
         $GITHUB_WORKSPACE/$DIY_SH
-        $GITHUB_WORKSPACE/scripts/preset-clash-core.sh $CLASH_KERNEL
+        $GITHUB_WORKSPACE/scripts/preset-clash-core.sh amd64
+        $GITHUB_WORKSPACE/scripts/preset-terminal-tools.sh
         
         make defconfig
      - name: Download Package
