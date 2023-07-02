@@ -91,7 +91,7 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRTROOT/.config
         chmod +x script/*.sh
         cd $OPENWRTROOT
-        $GITHUB_WORKSPACE/script/$DIY_SH
+        $GITHUB_WORKSPACE/$DIY_SH
         $GITHUB_WORKSPACE/script/preset-clash-core.sh amd64
         $GITHUB_WORKSPACE/script/preset-terminal-tools.sh
         
