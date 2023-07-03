@@ -44,9 +44,11 @@ sed -i 's/256/1024/g' target/linux/x86/image/Makefile
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_generate
-# sed -i '/uci commit system/i\uci set system.@system[0].hostname='TimWrt'' package/lean/default-settings/files/zzz-default-settings
-# sed -i "s/OpenWrt /YG @ TimWrt /g" package/lean/default-settings/files/zzz-default-settings
-# find package/*/ feeds/*/ -maxdepth 6 -path "*luci-app-smartdns/luasrc/controller/smartdns.lua" | xargs -i sed -i 's/\"SmartDNS\")\, 4/\"SmartDNS\")\, 3/g' {} 
+
+# 修改版本为编译日期
+date_version=$(date +"%y.%m.%d")
+orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
+sed -i "s/${orig_version}/R${date_version} by Y.G/g" package/lean/default-settings/files/zzz-default-settings
 
 # Test kernel 6.1
 sed -i 's/5.15/6.1/g' target/linux/x86/Makefile
@@ -79,14 +81,4 @@ sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-file
 # Modify ShadowSocksR Plus+ Menu order
 find package/*/ feeds/*/ -maxdepth 6 -path "*helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua" | xargs -i sed -i 's/\"ShadowSocksR Plus+\")\, 10/\"ShadowSocksR Plus+\")\, 0/g' {}
 
-# Add zhipin.com to ssr white list
-sed -i '$a\zhipin.com\nmacenjoy.co\niqiyi.com\nmi.com\nfesco.com.cn' feeds/helloworld/luci-app-ssr-plus/root/etc/ssrplus/white.list
 
-# Custom configs
-# git am $GITHUB_WORKSPACE/patches/lean/*.patch
-# git am $GITHUB_WORKSPACE/patches/*.patch
-echo -e " qqsir's TimWrt built on "$(date +%Y.%m.%d)"\n -----------------------------------------------------" >> package/base-files/files/etc/banner
-echo 'net.bridge.bridge-nf-call-iptables=0' >> package/base-files/files/etc/sysctl.conf
-echo 'net.bridge.bridge-nf-call-ip6tables=0' >> package/base-files/files/etc/sysctl.conf
-echo 'net.bridge.bridge-nf-call-arptables=0' >> package/base-files/files/etc/sysctl.conf
-echo 'net.bridge.bridge-nf-filter-vlan-tagged=0' >> package/base-files/files/etc/sysctl.conf
