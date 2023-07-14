@@ -57,6 +57,10 @@ sed -i 's/disable-https/enable-https/g' feeds/packages/admin/netdata/Makefile
 sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n        SSL key = /etc/netdata/ssl/key.pem\n' feeds/packages/admin/netdata/files/netdata.conf
 sed -i 's/http/https/g' package/feeds/luci/luci-app-netdata/luasrc/view/netdata/netdata.htm
 
+# Netdata support IPv6 access
+sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:* /g' feeds/packages/admin/netdata/netdata.conf
+sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:* /g' feeds/packages/admin/netdata/netdata.conf
+
 # uhttpd cert
 sed -i 's/uhttpd.crt/uhttpd.pem/g' package/network/services/uhttpd/files/uhttpd.config
 
