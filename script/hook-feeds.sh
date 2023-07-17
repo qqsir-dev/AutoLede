@@ -1,13 +1,17 @@
 #!/bin/bash
-# pushd customfeeds
+pushd customfeeds
 
-# Add luci-app-netdata
-# rm -rf packages/admin/netdata
-# svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/net/netdata packages/admin/netdata
-# rm -rf ../package/lean/luci-app-netdata
-# svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-netdata luci/applications/luci-app-netdata
+# CHG Netdata support SSL
+sed -i 's/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c +libopenssl/g' packages/admin/netdata/Makefile
+sed -i 's/disable-https/enable-https/g' packages/admin/netdata/Makefile
+sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n        SSL key = /etc/netdata/ssl/key.pem\n' packages/admin/netdata/files/netdata.conf
+sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:*/g' packages/admin/netdata/netdata.conf
+sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:*/g' packages/admin/netdata/netdata.conf
 
-# popd
+# TTYD SSL+IPv6 Config
+sed -i 's/option interface/# option interface/g' packages/utils/ttyd/files/ttyd.config
+sed -i "/command/a\        option ipv6 'on'\n        option ssl '1'\n        option ssl_cert /etc/uhttpd.pem\n        option ssl_key /etc/uhttpd.key" packages/utils/ttyd/files/ttyd.config
+popd
 
 # Set to local feeds
 pushd customfeeds/packages
