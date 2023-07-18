@@ -5,8 +5,8 @@ pushd customfeeds
 sed -i 's/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c +libopenssl/g' packages/admin/netdata/Makefile
 sed -i 's/disable-https/enable-https/g' packages/admin/netdata/Makefile
 sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n        SSL key = /etc/netdata/ssl/key.pem\n' packages/admin/netdata/files/netdata.conf
-sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:*/g' packages/admin/netdata/netdata.conf
-sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:*/g' packages/admin/netdata/netdata.conf
+sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:*/g' packages/admin/netdata/files/netdata.conf
+sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:*/g' packages/admin/netdata/files/netdata.conf
 
 # TTYD SSL+IPv6 Config
 sed -i 's/option interface/# option interface/g' packages/utils/ttyd/files/ttyd.config
