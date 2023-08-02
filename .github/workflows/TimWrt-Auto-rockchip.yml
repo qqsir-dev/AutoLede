@@ -5,7 +5,7 @@
 # Author: qqsir
 #=================================================
 
-name: Autolede_TimWrt_r4s
+name: Autolede_TimWrt_rockchip
 
 on:
   repository_dispatch:
@@ -18,8 +18,8 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: config/R4S.config
-  DIY_SH: script/R4S.sh
+  CONFIG_FILE: config/rockchip.config
+  DIY_SH: script/rockchip.sh
   # IPV6MOD_IN_FIRMWARE: false
   # KMODS_IN_FIRMWARE: true
   UPLOAD_WETRANSFER: false
@@ -30,6 +30,7 @@ env:
 jobs:
   Build:
     runs-on: ubuntu-22.04
+    if: github.repository == 'qqsir-dev/AutoLede'
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
       PLATFORM: ${{ steps.compile.outputs.PLATFORM }}
@@ -37,7 +38,7 @@ jobs:
       SUBTARGET: ${{ steps.compile.outputs.SUBTARGET }}
       FIRMWARE: ${{ steps.compile.outputs.FIRMWARE }}
       GENERATE_STATUS: ${{ steps.generate.outputs.GENERATE_STATUS }}
-
+ 
     steps:
      - name: Space cleanup and Initialization environment
        env:
@@ -49,13 +50,13 @@ jobs:
           sudo -E apt -y purge azure-cli* docker* ghc* zulu* llvm* firefox google* dotnet* powershell* openjdk* mysql* php* mongodb* dotnet* moby* snap*
           sudo -E apt-mark hold grub-efi-amd64-signed grub-efi-amd64-bin
           sudo -E apt -y full-upgrade
-          sudo -E apt -y install ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip python3-pyelftools libpython3-dev python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+          sudo -E apt -y install ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
           sudo -E systemctl daemon-reload
           sudo -E apt -y autoremove --purge
           sudo -E apt clean
           sudo -E timedatectl set-timezone "Asia/Shanghai"
           df -hT
-    
+
      - name: Checkout
        uses: actions/checkout@v3
 
@@ -75,12 +76,11 @@ jobs:
         git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
         chmod +x ../script/*.sh
         ../script/hook-feeds.sh
-    
+        
      - name: MOD index file
        run: |
          cd $OPENWRTROOT/package/lean/autocore/files/arm
-         sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Project URL %></td><td><a href="https://github.com/qqsir-dev/AutoLede" target="_blank"><%:Firmware Github%></a></td></tr>' index.htm
-    
+         sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Project URL %></td><td><a href="https://github.com/qqsir-dev/AutoLede" target="_blank"><%:Firmware Project%></a></td></tr>' index.htm
      - name: Install Feeds
        run: |
         cd $OPENWRTROOT
@@ -91,7 +91,9 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRTROOT/.config
         chmod +x script/*.sh
         cd $OPENWRTROOT
-        ../$DIY_SH
+        $GITHUB_WORKSPACE/$DIY_SH
+        $GITHUB_WORKSPACE/script/preset-clash-core.sh arm64
+        $GITHUB_WORKSPACE/script/preset-terminal-tools.sh
         
         make defconfig
      - name: Download Package
@@ -104,7 +106,7 @@ jobs:
         # fi
         
         cat .config
-        make download -j8
+        make download -j50
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
   
@@ -134,7 +136,6 @@ jobs:
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "FIRMWARE=$(echo $PWD)" >> $GITHUB_OUTPUT
         echo "COMPILE_STATUS=success" >> $GITHUB_OUTPUT
-        
      - name: Generate Firmware
        if: steps.compile.outputs.COMPILE_STATUS == 'success'
        id: generate
@@ -144,10 +145,10 @@ jobs:
         make target/install -j$(nproc) || make target/install -j1 V=s
         make checksum
         echo "GENERATE_STATUS=success" >> $GITHUB_OUTPUT
-#        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
-#        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
-#        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
-#        echo "FILE_TIME=$(date "+%m/%d/%Y-%H:%M")" >> $GITHUB_ENV
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
+        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+        echo "FILE_TIME=$(date "+%m/%d/%Y-%H:%M")" >> $GITHUB_ENV
      - name: Check Disk Status
        if: (!cancelled())
        run: df -hT
@@ -158,11 +159,12 @@ jobs:
        with:
         name: bin-archive
         path: openwrt/bin
-        
+ 
   Upload:
     needs: [Build]
     runs-on: ubuntu-22.04
-    
+    if: github.repository == 'qqsir-dev/AutoLede'
+
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -210,6 +212,7 @@ jobs:
           ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
           echo "::warning file=Firmware-Wetransfer.com::$(cat wetransfer.log | grep https)"
           echo "url=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
+          
       - name: Upload Firmware To CowTransfer
         id: cowtransfer
         if: steps.organize.outputs.ORGANIZE_STATUS == 'success' && env.UPLOAD_COWTRANSFER == 'true'
@@ -222,19 +225,19 @@ jobs:
         id: tag
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
         run: |
-          echo "release_tag=$(date +"%Y.%m.%d")-Lean4" >> $GITHUB_OUTPUT
+          echo "release_tag=$(date +"%Y.%m.%d")-Lean2" >> $GITHUB_OUTPUT
           echo "release_date=$(date +"%Y.%m.%d")" >> $GITHUB_OUTPUT
           touch release.txt          
-          echo "r4s专用路由(r4s Firmware ONLY)固件
-                IP: 192.158.50.1" >> release.txt
+          echo "主路由(Main Router Mode Firmware)模式固件" >> release.txt
           echo "status=success" >> $GITHUB_OUTPUT
+          
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
         if: steps.tag.outputs.status == 'success' && !cancelled()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: ${{ steps.tag.outputs.release_date }} TimWrt-R4S
+          name: ${{ steps.tag.outputs.release_date }} Timwrt-rockchip
           tag_name: ${{ steps.tag.outputs.release_tag }}
           body_path: release.txt
           files: ${{ env.FIRMWARE }}/*
