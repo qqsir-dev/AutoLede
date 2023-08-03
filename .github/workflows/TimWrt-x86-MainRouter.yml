@@ -5,7 +5,7 @@
 # Author: qqsir
 #=================================================
 
-name: Autolede_TimWrt_x86_MainRouter
+name: Openwrt x86_MainRouter
 
 on:
   repository_dispatch:
