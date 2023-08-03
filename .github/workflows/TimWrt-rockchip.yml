@@ -250,9 +250,9 @@ jobs:
         git pull
 
     - name: MOD index file
-       run: |
-         cd $OPENWRT_PATH/package/lean/autocore/files/arm
-         sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Project URL %></td><td><a href="https://github.com/qqsir-dev/AutoLede" target="_blank"><%:Firmware Project%></a></td></tr>' index.htm
+      run: |
+        cd $OPENWRT_PATH/package/lean/autocore/files/arm
+        sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Project URL %></td><td><a href="https://github.com/qqsir-dev/AutoLede" target="_blank"><%:Firmware Project%></a></td></tr>' index.htm
 
     - name: Install Feeds
       run: |
