@@ -116,6 +116,9 @@ find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_U
 # sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/model/cbi/v2ray_server/*.lua
 # sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/view/v2ray_server/*.htm
 
+./scripts/feeds update -a
+./scripts/feeds install -a
+
 # Test kernel 6.1
 sed -i 's/5.15/6.1/g' target/linux/arm/Makefile
 
@@ -141,16 +144,12 @@ sed -i 's/http/https/g' package/feeds/luci/luci-app-netdata/luasrc/view/netdata/
 sed -i 's/uhttpd.crt/uhttpd.pem/g' package/network/services/uhttpd/files/uhttpd.config
 
 # CHG Netdata support SSL
-sed -i 's/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c +libopenssl/g' packages/admin/netdata/Makefile
-sed -i 's/disable-https/enable-https/g' packages/admin/netdata/Makefile
-sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n        SSL key = /etc/netdata/ssl/key.pem\n' packages/admin/netdata/files/netdata.conf
-sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:*/g' packages/admin/netdata/files/netdata.conf
-sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:*/g' packages/admin/netdata/files/netdata.conf
+sed -i 's/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c +libopenssl/g' feeds/packages/admin/netdata/Makefile
+sed -i 's/disable-https/enable-https/g' feeds/packages/admin/netdata/Makefile
+sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n        SSL key = /etc/netdata/ssl/key.pem\n' feeds/packages/admin/netdata/files/netdata.conf
+sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
+sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
 
 # TTYD SSL+IPv6 Config
-sed -i 's/option interface/# option interface/g' packages/utils/ttyd/files/ttyd.config
+sed -i 's/option interface/# option interface/g' feeds/packages/utils/ttyd/files/ttyd.config
 sed -i "/command/a\        option ipv6 'on'\n        option ssl '1'\n        option ssl_cert /etc/uhttpd.pem\n        option ssl_key /etc/uhttpd.key" packages/utils/ttyd/files/ttyd.config
-
-
-./scripts/feeds update -a
-./scripts/feeds install -a
