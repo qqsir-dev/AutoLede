@@ -110,6 +110,8 @@ jobs:
       if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
       run: |
         cd $OPENWRT_PATH
+        git clone --depth=1 https://github.com/coolsnowwolf/packages
+        git clone --depth=1 https://github.com/coolsnowwolf/luci
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
