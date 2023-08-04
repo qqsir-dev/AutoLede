@@ -152,4 +152,4 @@ sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408
 
 # TTYD SSL+IPv6 Config
 sed -i 's/option interface/# option interface/g' feeds/packages/utils/ttyd/files/ttyd.config
-sed -i "/command/a\        option ipv6 'on'\n        option ssl '1'\n        option ssl_cert /etc/uhttpd.pem\n        option ssl_key /etc/uhttpd.key" packages/utils/ttyd/files/ttyd.config
+sed -i "/command/a\        option ipv6 'on'\n        option ssl '1'\n        option ssl_cert /etc/uhttpd.pem\n        option ssl_key /etc/uhttpd.key" feeds/packages/utils/ttyd/files/ttyd.config
