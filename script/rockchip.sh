@@ -22,6 +22,7 @@ sed -i "/exit/iuci set network.wan.ifname=\'eth2\'\nuci set network.wan.proto=\'
 
 # TTYD 自动登录
 # sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
+sed -i 's/option interface/# option interface/g' feeds/packages/utils/ttyd/files/ttyd.config
 
 # Set Default Language - English
 sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-files/files/etc/rc.local
