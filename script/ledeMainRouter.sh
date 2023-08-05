@@ -1,7 +1,7 @@
 #!/bin/bash
 #===============================================
 # Description: DIY script
-# File name: diy-script.sh
+# File name: ledeMainRouter.sh
 # Lisence: MIT
 # Author: P3TERX
 # Blog: https://p3terx.com
