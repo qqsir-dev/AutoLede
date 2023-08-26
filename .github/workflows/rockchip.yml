@@ -48,8 +48,8 @@ jobs:
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android
         sudo -E apt-get -qq update
-        # sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
-        sudo apt -qq -y --no-install-recommends install pv jq \
+        sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
+        # sudo apt -qq -y --no-install-recommends install pv jq \
           ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
           bzip2 ccache clang cmake cpio curl device-tree-compiler ecj fastjar flex gawk gettext gcc-multilib \
           g++-multilib git gnutls-dev gperf haveged help2man intltool lib32gcc-s1 libc6-dev-i386 libelf-dev \
@@ -207,8 +207,8 @@ jobs:
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android
         sudo -E apt-get -y purge azure-cli* docker* ghc* zulu* llvm* firefox* google* dotnet* powershell* openjdk* mysql* php* mongodb* moby* snap* aspnetcore*
         sudo -E apt-get -qq update
-        # sudo -E apt-get -y install libfuse-dev $(curl -fsSL is.gd/depends_ubuntu_2204)
-        sudo apt -qq -y --no-install-recommends install pv jq \
+        sudo -E apt-get -y install libfuse-dev $(curl -fsSL is.gd/depends_ubuntu_2204)
+        # sudo apt -qq -y --no-install-recommends install pv jq \
           ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
           bzip2 ccache clang cmake cpio curl device-tree-compiler ecj fastjar flex gawk gettext gcc-multilib \
           g++-multilib git gnutls-dev gperf haveged help2man intltool lib32gcc-s1 libc6-dev-i386 libelf-dev \
