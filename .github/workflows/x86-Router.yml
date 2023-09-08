@@ -258,7 +258,7 @@ jobs:
     - name: MOD index file
       run: |
         cd $OPENWRT_PATH/package/lean/autocore/files/x86
-        sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Project URL %></td><td><a href="https://github.com/yangjiey2k/AutoLede/releases" target="_blank"><%:固件下载%></a></td></tr>' index.htm
+        sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:固件下载链接%></td><td><a href="https://github.com/yangjiey2k/AutoLede/releases" target="_blank"><%:点击下载%></a></td></tr>' index.htm
 
     - name: Load Custom Configuration
       run: |
