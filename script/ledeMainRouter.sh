@@ -24,10 +24,10 @@ git clone https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolprox
 git clone https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 # git clone https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
-svn export https://github.com/Lienol/openwrt-package/tree/main/luci-app-filebrowser package/luci-app-filebrowser
-svn export https://github.com/Lienol/openwrt-package/tree/main/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
-svn export https://github.com/immortalwrt/luci/tree/master/applications/luci-app-eqos package/luci-app-eqos
-svn export https://github.com/syb999/openwrt-23.05.0/tree/master/package/network/services/msd_lite package/msd_lite
+svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser package/luci-app-filebrowser
+svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
+svn export https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-eqos package/luci-app-eqos
+#svn export https://github.com/syb999/openwrt-23.05.0/trunk/package/network/services/msd_lite package/msd_lite
 
 # 科学上网插件
 git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
