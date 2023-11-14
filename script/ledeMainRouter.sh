@@ -13,7 +13,6 @@
 # rm -rf feeds/packages/net/smartdns
 rm -rf feeds/luci/themes/luci-theme-argon
 # rm -rf feeds/luci/themes/luci-theme-netgear
-# rm -rf feeds/luci/applications/luci-app-dockerman
 # rm -rf feeds/luci/applications/luci-app-mosdns
 # rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-serverchan
@@ -27,27 +26,26 @@ git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 # git clone https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
 svn export https://github.com/Lienol/openwrt-package/tree/main/luci-app-filebrowser package/luci-app-filebrowser
 svn export https://github.com/Lienol/openwrt-package/tree/main/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
-# svn export https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman
 svn export https://github.com/immortalwrt/luci/tree/master/applications/luci-app-eqos package/luci-app-eqos
 svn export https://github.com/syb999/openwrt-23.05.0/tree/master/package/network/services/msd_lite package/msd_lite
 
 # 科学上网插件
-git clone --depth=1 --single-branch --branch "main" https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
-git clone --depth=1 --single-branch --branch "main" https://github.com/haiibo/packages/luci-app-vssr.git package/luci-app-vssr
-git clone https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
-git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
-git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall2/tree/main/luci-app-passwall2.git package/luci-app-passwall2
-git clone --depth=1 --single-branch --branch "dev" https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
+svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
+git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
+svn export https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwall2 package/luci-app-passwall2
+svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 
 # Themes
-git clone https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
-git clone --depth=1 --single-branch --branch "18.06" https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-git clone --depth=1 --single-branch --branch "18.06" https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
-git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
-git clone --depth=1 --single-branch --branch "main" https://github.com/haiibo/packages/luci-theme-atmaterial.git package/luci-theme-atmaterial
-git clone --depth=1 --single-branch --branch "main" https://github.com/haiibo/packages/luci-theme-opentomcat.git package/luci-theme-opentomcat
-# svn export https://github.com/haiibo/packages/tree/main/luci-theme-netgear package/luci-theme-netgear
+git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
+svn export https://github.com/haiibo/packages/trunk/luci-theme-atmaterial package/luci-theme-atmaterial
+svn export https://github.com/haiibo/packages/trunk/luci-theme-opentomcat package/luci-theme-opentomcat
+# svn export https://github.com/haiibo/packages/trunk/luci-theme-netgear package/luci-theme-netgear
 
 # 更改 Argon 主题背景
 cp -f $GITHUB_WORKSPACE/pics/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
@@ -79,11 +77,11 @@ git clone --depth=1 --single-branch --branch "master" https://github.com/sbwml/l
 git clone --depth=1 --single-branch --branch "master" https://github.com/sbwml/luci-app-alist/alist.git package/alist
 
 # iStore
-git clone --depth=1 --single-branch --branch "main" https://github.com/linkease/istore-ui/app-store-ui.git package/app-store-ui
-git clone --depth=1 --single-branch --branch "main" https://github.com/linkease/istore/luci package/luci-app-store.git
+svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
+svn export https://github.com/linkease/istore/trunk/luci package/luci-app-store
 
 # 在线用户
-git clone --depth=1 --single-branch --branch "main" https://github.com/haiibo/packages/luci-app-onliner.git package/luci-app-onliner
+svn export https://github.com/haiibo/packages/trunk/luci-app-onliner package/luci-app-onliner
 sed -i '$i uci set nlbwmon.@nlbwmon[0].refresh_interval=2s' package/lean/default-settings/files/zzz-default-settings
 sed -i '$i uci commit nlbwmon' package/lean/default-settings/files/zzz-default-settings
 chmod 755 package/luci-app-onliner/root/usr/share/onliner/setnlbw.sh
