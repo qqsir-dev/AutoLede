@@ -32,21 +32,21 @@ svn export https://github.com/immortalwrt/luci/tree/master/applications/luci-app
 svn export https://github.com/syb999/openwrt-23.05.0/tree/master/package/network/services/msd_lite package/msd_lite
 
 # 科学上网插件
-git clone https://github.com/fw876/helloworld/tree/main package/luci-app-ssr-plus
-svn export https://github.com/haiibo/packages/tree/main/luci-app-vssr package/luci-app-vssr
+git clone --depth=1 --single-branch --branch "main" https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
+git clone --depth=1 --single-branch --branch "main" https://github.com/haiibo/packages/luci-app-vssr.git package/luci-app-vssr
 git clone https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
-git clone https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
-svn export https://github.com/xiaorouji/openwrt-passwall/tree/main/luci-app-passwall package/luci-app-passwall
-svn export https://github.com/xiaorouji/openwrt-passwall2/tree/main/luci-app-passwall2 package/luci-app-passwall2
-svn export https://github.com/vernesong/OpenClash/tree/master/luci-app-openclash package/luci-app-openclash
+git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
+git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall2/tree/main/luci-app-passwall2.git package/luci-app-passwall2
+git clone --depth=1 --single-branch --branch "dev" https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 
 # Themes
 git clone https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
-git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+git clone --depth=1 --single-branch --branch "18.06" https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+git clone --depth=1 --single-branch --branch "18.06" https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
-svn export https://github.com/haiibo/packages/tree/main/luci-theme-atmaterial package/luci-theme-atmaterial
-svn export https://github.com/haiibo/packages/tree/main/luci-theme-opentomcat package/luci-theme-opentomcat
+git clone --depth=1 --single-branch --branch "main" https://github.com/haiibo/packages/luci-theme-atmaterial.git package/luci-theme-atmaterial
+git clone --depth=1 --single-branch --branch "main" https://github.com/haiibo/packages/luci-theme-opentomcat.git package/luci-theme-opentomcat
 # svn export https://github.com/haiibo/packages/tree/main/luci-theme-netgear package/luci-theme-netgear
 
 # 更改 Argon 主题背景
@@ -75,15 +75,15 @@ sed -i "s|ARMv8|ARMv8_PLUS|g" package/luci-app-amlogic/root/etc/config/amlogic
 # svn export https://github.com/linkease/nas-packages/trunk/network/services/ddnsto package/ddnsto
 
 # Alist
-svn export https://github.com/sbwml/luci-app-alist package/luci-app-alist
-svn export https://github.com/sbwml/luci-app-alist/tree/master/alist package/alist
+git clone --depth=1 --single-branch --branch "master" https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
+git clone --depth=1 --single-branch --branch "master" https://github.com/sbwml/luci-app-alist/alist.git package/alist
 
 # iStore
-svn export https://github.com/linkease/istore-ui/tree/main/app-store-ui package/app-store-ui
-svn export https://github.com/linkease/istore/tree/main/luci package/luci-app-store
+git clone --depth=1 --single-branch --branch "main" https://github.com/linkease/istore-ui/app-store-ui.git package/app-store-ui
+git clone --depth=1 --single-branch --branch "main" https://github.com/linkease/istore/luci package/luci-app-store.git
 
 # 在线用户
-svn export https://github.com/haiibo/packages/tree/main/luci-app-onliner package/luci-app-onliner
+git clone --depth=1 --single-branch --branch "main" https://github.com/haiibo/packages/luci-app-onliner.git package/luci-app-onliner
 sed -i '$i uci set nlbwmon.@nlbwmon[0].refresh_interval=2s' package/lean/default-settings/files/zzz-default-settings
 sed -i '$i uci commit nlbwmon' package/lean/default-settings/files/zzz-default-settings
 chmod 755 package/luci-app-onliner/root/usr/share/onliner/setnlbw.sh
