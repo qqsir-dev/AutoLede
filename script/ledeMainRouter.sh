@@ -73,8 +73,8 @@ sed -i "s|ARMv8|ARMv8_PLUS|g" package/luci-app-amlogic/root/etc/config/amlogic
 # svn export https://github.com/linkease/nas-packages/trunk/network/services/ddnsto package/ddnsto
 
 # Alist
-git clone --depth=1 --single-branch --branch "master" https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
-git clone --depth=1 --single-branch --branch "master" https://github.com/sbwml/luci-app-alist/alist.git package/alist
+svn export https://github.com/sbwml/luci-app-alist/trunk/luci-app-alist package/luci-app-alist
+svn export https://github.com/sbwml/luci-app-alist/trunk/alist package/alist
 
 # iStore
 svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
