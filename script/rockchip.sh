@@ -141,7 +141,7 @@ sed -i 's|admin\\|admin\\/services\\|g' feeds/luci/applications/luci-app-dockerm
 # sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/view/v2ray_server/*.htm
 
 # GoLang
-rm -rf feeds/packages/lang/golang && git clone -b 21.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang && git clone -b 21.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
