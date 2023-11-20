@@ -2,8 +2,7 @@
 # Description: Build OpenWrt
 # File name: rockchip2.yml
 # Lisence: MIT
-# Author: P3TERX
-# https://github.com/P3TERX
+# Author: qqsir
 #===============================================
 
 name: Rockchip2 OpenWrt
