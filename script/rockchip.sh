@@ -3,8 +3,7 @@
 # Description: DIY script
 # File name: diy-script.sh
 # Lisence: MIT
-# Author: P3TERX
-# Blog: https://p3terx.com
+# Author: qqsir
 #===============================================
 
 # Test kernel 6.1
