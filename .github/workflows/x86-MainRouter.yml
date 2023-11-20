@@ -2,8 +2,7 @@
 # Description: Build OpenWrt
 # File name: x86-MainRouter.yml
 # Lisence: MIT
-# Author: P3TERX
-# https://github.com/P3TERX
+# Author: qqsir
 #===============================================
 
 name: X86_64 OpenWrt MainRouter
