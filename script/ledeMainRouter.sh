@@ -3,8 +3,7 @@
 # Description: DIY script
 # File name: ledeMainRouter.sh
 # Lisence: MIT
-# Author: P3TERX
-# Blog: https://p3terx.com
+# Author: qqsir
 #===============================================
 
 # 移除要替换的包
