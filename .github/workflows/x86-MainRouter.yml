@@ -13,8 +13,8 @@ on:
     - cron: 0 20 * * *
 
 env:
-  SOURCE_URL: https://github.com/coolsnowwolf/lede
-  SOURCE_BRANCH: master
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
   CONFIG_FILE: config/lede.config
   DIY_SCRIPT: script/ledeMainRouter.sh
   CLASH_KERNEL: amd64
