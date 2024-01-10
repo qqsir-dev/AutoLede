@@ -23,13 +23,10 @@ git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 # git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
-# svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser package/luci-app-filebrowser
 git clone https://github.com/Lienol/openwrt-package Lienol
 cp -rf Lienol/luci-app-filebrowser package/luci-app-filebrowser
-# svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
 cp -rf Lienol/luci-app-ssr-mudb-server package/luci-app-filebrowser
 rm -rf Lienol
-# svn export https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-eqos package/luci-app-eqos
 git clone -b openwrt-18.06 https://github.com/immortalwrt/luci immortalwrt
 cp -rf immortalwrt/applications/luci-app-eqos package/luci-app-eqos
 rm -rf immortalwrt
@@ -37,12 +34,24 @@ rm -rf immortalwrt
 
 # 科学上网插件
 git clone --depth=1 https://github.com/fw876/helloworld package/luci-app-ssr-plus
-svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
+# svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
+git clone https://github.com/haiibo/packages haiibo
+cp -rf haiibo/luci-app-vssr package/luci-app-vssr
+rm -rf haiibo
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
-svn export https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
-svn export https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwall2 package/luci-app-passwall2
-svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+# svn export https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall xiaorouji
+cp -rf xiaorouji/luci-app-passwall package/luci-app-passwall
+rm -rf xiaorouji
+# svn export https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwall2 package/luci-app-passwall2
+git clone https://github.com/xiaorouji/openwrt-passwall2 xiaorouji2
+cp -rf xiaorouji2/luci-app-passwall2 package/luci-app-passwall2
+rm -rf xiaorouji2
+# svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+git clone https://github.com/vernesong/OpenClash vernesong
+cp -rf vernesong/luci-app-openclash package/luci-app-openclash
+rm -rf vernesong
 
 # Themes
 git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
