@@ -25,7 +25,7 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFil
 # git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
 git clone https://github.com/Lienol/openwrt-package Lienol
 cp -rf Lienol/luci-app-filebrowser package/luci-app-filebrowser
-cp -rf Lienol/luci-app-ssr-mudb-server package/luci-app-filebrowser
+cp -rf Lienol/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
 rm -rf Lienol
 git clone -b openwrt-18.06 https://github.com/immortalwrt/luci immortalwrt
 cp -rf immortalwrt/applications/luci-app-eqos package/luci-app-eqos
@@ -44,17 +44,17 @@ rm -rf haiibo
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
 # svn export https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall xiaorouji
-cp -rf xiaorouji/luci-app-passwall package/luci-app-passwall
-rm -rf xiaorouji
+git clone https://github.com/xiaorouji/openwrt-passwall passwall
+cp -rf passwall/luci-app-passwall package/luci-app-passwall
+rm -rf passwall
 # svn export https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwall2 package/luci-app-passwall2
-git clone https://github.com/xiaorouji/openwrt-passwall2 xiaorouji2
-cp -rf xiaorouji2/luci-app-passwall2 package/luci-app-passwall2
-rm -rf xiaorouji2
+git clone https://github.com/xiaorouji/openwrt-passwall2 passwall2
+cp -rf passwall2/luci-app-passwall2 package/luci-app-passwall2
+rm -rf passwall2
 # svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
-git clone https://github.com/vernesong/OpenClash vernesong
-cp -rf vernesong/luci-app-openclash package/luci-app-openclash
-rm -rf vernesong
+git clone https://github.com/vernesong/OpenClash openclash
+cp -rf openclash/luci-app-openclash package/luci-app-openclash
+rm -rf openclash
 
 # Themes
 git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
@@ -71,9 +71,9 @@ cp -f $GITHUB_WORKSPACE/pics/bg1.jpg package/luci-theme-argon/htdocs/luci-static
 
 # 晶晨宝盒
 # svn export https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
-git clone https://github.com/ophub/luci-app-amlogic ophub
-cp -rf ophub/luci-app-amlogic package/luci-app-amlogic
-rm -rf ophub
+git clone https://github.com/ophub/luci-app-amlogic amlogic
+cp -rf amlogic/luci-app-amlogic package/luci-app-amlogic
+rm -rf amlogic
 sed -i "s|firmware_repo.*|firmware_repo 'https://github.com/haiibo/OpenWrt'|g" package/luci-app-amlogic/root/etc/config/amlogic
 # sed -i "s|kernel_path.*|kernel_path 'https://github.com/ophub/kernel'|g" package/luci-app-amlogic/root/etc/config/amlogic
 sed -i "s|ARMv8|ARMv8_PLUS|g" package/luci-app-amlogic/root/etc/config/amlogic
@@ -97,10 +97,10 @@ sed -i "s|ARMv8|ARMv8_PLUS|g" package/luci-app-amlogic/root/etc/config/amlogic
 # Alist
 # svn export https://github.com/sbwml/luci-app-alist/trunk/luci-app-alist package/luci-app-alist
 # svn export https://github.com/sbwml/luci-app-alist/trunk/alist package/alist
-git clone https://github.com/sbwml/luci-app-alist sbwml
-cp -rf sbwml/luci-app-alist package/luci-app-alist
-cp -rf sbwml/alist package/alist
-rm -rf sbwml
+git clone https://github.com/sbwml/luci-app-alist alist
+cp -rf alist/luci-app-alist package/luci-app-alist
+cp -rf alist/alist package/alist
+rm -rf alist
 
 # iStore
 # svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
@@ -113,7 +113,7 @@ cp -rf linkease2/luci package/luci-app-store
 rm -rf linkease2
 
 # 在线用户
-# svn export https://github.com/haiibo/packages/trunk/luci-app-onliner package/luci-app-onliner
+# check up svn export https://github.com/haiibo/packages/trunk/luci-app-onliner package/luci-app-onliner
 sed -i '$i uci set nlbwmon.@nlbwmon[0].refresh_interval=2s' package/lean/default-settings/files/zzz-default-settings
 sed -i '$i uci commit nlbwmon' package/lean/default-settings/files/zzz-default-settings
 chmod 755 package/luci-app-onliner/root/usr/share/onliner/setnlbw.sh
