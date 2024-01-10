@@ -70,7 +70,7 @@ clone_or_update_git_repo "https://github.com/Lienol" "openwrt-package/luci-app-f
 # svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
 clone_or_update_git_repo "https://github.com/Lienol" "openwrt-package/luci-app-ssr-mudb-server" "main" "package/luci-app-ssr-mudb-server"
 # svn export https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-eqos package/luci-app-eqos
-clone_or_update_git_repo "https://github.com/immortalwrt" "luci/applications/luci-app-eqos/" "openwrt-18.06" "package/luci-app-ssr-mudb-server"
+clone_or_update_git_repo "https://github.com/immortalwrt" "luci/applications/luci-app-eqos/" "openwrt-18.06" "package/luci-app-eqos"
 #svn export https://github.com/syb999/openwrt-23.05.0/trunk/package/network/services/msd_lite package/msd_lite
 
 # 科学上网插件
