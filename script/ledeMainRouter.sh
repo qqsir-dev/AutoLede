@@ -66,7 +66,7 @@ git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 # git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
 # svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser package/luci-app-filebrowser
-clone_or_update_git_repo "https://github.com/Lienol" "package/luci-app-filebrowser" "" "openwrt-package/luci-app-filebrowser"
+clone_or_update_git_repo "https://github.com/Lienol/openwrt-package/tree/main/luci-app-filebrowser" "package/luci-app-filebrowser" "" "openwrt-package/luci-app-filebrowser"
 # svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
 clone_or_update_git_repo "https://github.com/Lienol" "package/luci-app-ssr-mudb-server" "" "openwrt-package/luci-app-ssr-mudb-server"
 # svn export https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-eqos package/luci-app-eqos
