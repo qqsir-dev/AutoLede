@@ -37,6 +37,9 @@ git clone --depth=1 https://github.com/fw876/helloworld package/luci-app-ssr-plu
 # svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
 git clone https://github.com/haiibo/packages haiibo
 cp -rf haiibo/luci-app-vssr package/luci-app-vssr
+cp -rf haiibo/luci-theme-atmaterial package/luci-theme-atmaterial
+cp -rf haiibo/luci-theme-opentomcat package/luci-theme-opentomcat
+cp -rf haiibo/luci-app-onliner package/luci-app-onliner
 rm -rf haiibo
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
@@ -58,15 +61,19 @@ git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
-svn export https://github.com/haiibo/packages/trunk/luci-theme-atmaterial package/luci-theme-atmaterial
-svn export https://github.com/haiibo/packages/trunk/luci-theme-opentomcat package/luci-theme-opentomcat
+# svn export https://github.com/haiibo/packages/trunk/luci-theme-atmaterial package/luci-theme-atmaterial
+# svn export https://github.com/haiibo/packages/trunk/luci-theme-opentomcat package/luci-theme-opentomcat
+
 # svn export https://github.com/haiibo/packages/trunk/luci-theme-netgear package/luci-theme-netgear
 
 # 更改 Argon 主题背景
 cp -f $GITHUB_WORKSPACE/pics/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 # 晶晨宝盒
-svn export https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+# svn export https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+git clone https://github.com/ophub/luci-app-amlogic ophub
+cp -rf ophub/luci-app-amlogic package/luci-app-amlogic
+rm -rf ophub
 sed -i "s|firmware_repo.*|firmware_repo 'https://github.com/haiibo/OpenWrt'|g" package/luci-app-amlogic/root/etc/config/amlogic
 # sed -i "s|kernel_path.*|kernel_path 'https://github.com/ophub/kernel'|g" package/luci-app-amlogic/root/etc/config/amlogic
 sed -i "s|ARMv8|ARMv8_PLUS|g" package/luci-app-amlogic/root/etc/config/amlogic
@@ -88,15 +95,25 @@ sed -i "s|ARMv8|ARMv8_PLUS|g" package/luci-app-amlogic/root/etc/config/amlogic
 # svn export https://github.com/linkease/nas-packages/trunk/network/services/ddnsto package/ddnsto
 
 # Alist
-svn export https://github.com/sbwml/luci-app-alist/trunk/luci-app-alist package/luci-app-alist
-svn export https://github.com/sbwml/luci-app-alist/trunk/alist package/alist
+# svn export https://github.com/sbwml/luci-app-alist/trunk/luci-app-alist package/luci-app-alist
+# svn export https://github.com/sbwml/luci-app-alist/trunk/alist package/alist
+git clone https://github.com/sbwml/luci-app-alist sbwml
+cp -rf sbwml/luci-app-alist package/luci-app-alist
+cp -rf sbwml/alist package/alist
+rm -rf sbwml
 
 # iStore
-svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
-svn export https://github.com/linkease/istore/trunk/luci package/luci-app-store
+# svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
+git clone https://github.com/linkease/istore-ui linkease
+cp -rf linkease/app-store-ui package/app-store-ui
+rm -rf linkease
+# svn export https://github.com/linkease/istore/trunk/luci package/luci-app-store
+git clone https://github.com/linkease/istore linkease2
+cp -rf linkease2/luci package/luci-app-store
+rm -rf linkease2
 
 # 在线用户
-svn export https://github.com/haiibo/packages/trunk/luci-app-onliner package/luci-app-onliner
+# svn export https://github.com/haiibo/packages/trunk/luci-app-onliner package/luci-app-onliner
 sed -i '$i uci set nlbwmon.@nlbwmon[0].refresh_interval=2s' package/lean/default-settings/files/zzz-default-settings
 sed -i '$i uci commit nlbwmon' package/lean/default-settings/files/zzz-default-settings
 chmod 755 package/luci-app-onliner/root/usr/share/onliner/setnlbw.sh
