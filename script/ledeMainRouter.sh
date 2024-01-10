@@ -6,48 +6,6 @@
 # Author: qqsir
 #===============================================
 
-CURRENT_PATH=$(pwd)
-
-clone_or_update_git_repo() {
-  # 参数检查
-  if [ "$#" -lt 2 ]; then
-    echo "Usage: clone_or_update_git_repo <git_url> <target_directory> [branch] [subdirectory]"
-    return 1
-  fi
-
-  local git_url="$1"
-  local source_target_directory="$2"
-  local target_directory="$2"
-  local branch="$3"
-  local subdirectory="$4"
-
-  if [ -n "$subdirectory" ]; then
-    target_directory=$CURRENT_PATH/repos/$(echo "$git_url" | awk -F'/' '{print $(NF-1)"-"$NF}')
-  fi
-
-  # 检查目标目录是否存在
-  if [ -d "$target_directory" ]; then
-    pushd "$target_directory" || return 1
-    git pull
-    popd
-  else
-    if [ -n "$branch" ]; then
-      git clone --depth=1 -b "$branch" "$git_url" "$target_directory"
-    else
-      git clone --depth=1 "$git_url" "$target_directory"
-    fi
-  fi
-
-  if [ -n "$subdirectory" ]; then
-    cp -a $target_directory/$subdirectory $source_target_directory
-  fi
-}
-
-# 用法举例
-# clone_or_update_git_repo "https://github.com/xxx/yyy" "目标目录" "分支名" "git 子目录"
-# clone_or_update_git_repo "https://github.com/xxx/yyy" "package/luci-xxx" "openwrt-18.06" "applications/xxx"
-# clone_or_update_git_repo "https://github.com/xxx/yyy" "package/luci-xxx" "" "applications/xxx"
-
 # 移除要替换的包
 # rm -rf feeds/packages/net/mosdns
 # rm -rf feeds/packages/net/msd_lite
@@ -66,11 +24,15 @@ git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 # git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
 # svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser package/luci-app-filebrowser
-clone_or_update_git_repo "https://github.com/Lienol/openwrt-package/tree/main/luci-app-filebrowser" "package/luci-app-filebrowser" "" "openwrt-package/luci-app-filebrowser"
+git clone https://github.com/Lienol/openwrt-package Lienol
+cp -rf Lienol/luci-app-filebrowser package/luci-app-filebrowser
 # svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
-clone_or_update_git_repo "https://github.com/Lienol" "package/luci-app-ssr-mudb-server" "" "openwrt-package/luci-app-ssr-mudb-server"
+cp -rf Lienol/luci-app-ssr-mudb-server package/luci-app-filebrowser
+rm -rf Lienol
 # svn export https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-eqos package/luci-app-eqos
-clone_or_update_git_repo "https://github.com/immortalwrt/luci" "package/luci-app-eqos" "openwrt-18.06" "applications/luci-app-eqos"
+git clone -b openwrt-18.06 https://github.com/immortalwrt/luci immortalwrt
+cp -rf immortalwrt/applications/luci-app-eqos package/luci-app-eqos
+rm -rf immortalwrt
 #svn export https://github.com/syb999/openwrt-23.05.0/trunk/package/network/services/msd_lite package/msd_lite
 
 # 科学上网插件
