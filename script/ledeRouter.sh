@@ -45,9 +45,9 @@ rm -rf passwall
 git clone https://github.com/xiaorouji/openwrt-passwall2 passwall2
 cp -rf passwall2/luci-app-passwall2 package/luci-app-passwall2
 rm -rf passwall2
-git clone https://github.com/vernesong/OpenClash openclash
-cp -rf openclash/luci-app-openclash package/luci-app-openclash
-rm -rf openclash
+#git clone https://github.com/vernesong/OpenClash openclash
+#cp -rf openclash/luci-app-openclash package/luci-app-openclash
+#rm -rf openclash
 
 # Themes
 git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
