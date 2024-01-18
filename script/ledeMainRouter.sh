@@ -1,6 +1,6 @@
 #!/bin/bash
 #===============================================
-# Description: DIY script
+# Description: X86 Main Router
 # File name: ledeMainRouter.sh
 # Lisence: MIT
 # Author: qqsir
