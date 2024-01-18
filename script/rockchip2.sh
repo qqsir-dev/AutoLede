@@ -1,7 +1,7 @@
 #!/bin/bash
 #===============================================
-# Description: DIY script
-# File name: diy-script.sh
+# Description: R4S
+# File name: rockchip2.sh
 # Lisence: MIT
 # Author: qqsir
 #===============================================
