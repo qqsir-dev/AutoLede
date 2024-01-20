@@ -8,91 +8,38 @@
 #===============================================
 
 # 移除要替换的包
-# rm -rf feeds/packages/net/mosdns
-# rm -rf feeds/packages/net/msd_lite
-# rm -rf feeds/packages/net/smartdns
 rm -rf feeds/luci/themes/luci-theme-argon
-# rm -rf feeds/luci/themes/luci-theme-netgear
-# rm -rf feeds/luci/applications/luci-app-dockerman
-# rm -rf feeds/luci/applications/luci-app-mosdns
-# rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-serverchan
 
-# 添加额外插件
-# git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
-git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
-git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
-git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
-git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-# git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
-svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser package/luci-app-filebrowser
-svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
-# svn export https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman
-svn export https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-eqos package/luci-app-eqos
-svn export https://github.com/syb999/openwrt-19.07.1/trunk/package/network/services/msd_lite package/msd_lite
+# Git稀疏克隆，只克隆指定目录到本地
+function git_sparse_clone() {
+  branch="$1" repourl="$2" && shift 2
+  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+  cd $repodir && git sparse-checkout set $@
+  mv -f $@ ../package
+  cd .. && rm -rf $repodir
+}
 
 # 科学上网插件
-git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
-git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr package/luci-app-vssr
-git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
+git clone --depth=1 https://github.com/fw876/helloworld package/luci-app-ssr-plus
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
-#svn export https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
-#svn export https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwall2 package/luci-app-passwall2
-#svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
-git clone https://github.com/xiaorouji/openwrt-passwall passwall
-cp -rf passwall/luci-app-passwall package/luci-app-passwall
-rm -rf passwall
-git clone https://github.com/xiaorouji/openwrt-passwall2 passwall2
-cp -rf passwall2/luci-app-passwall2 package/luci-app-passwall2
-rm -rf passwall2
-#git clone https://github.com/vernesong/OpenClash openclash
-#cp -rf openclash/luci-app-openclash package/luci-app-openclash
-#rm -rf openclash
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
+git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
 # Themes
 git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
-svn export https://github.com/haiibo/packages/trunk/luci-theme-atmaterial package/luci-theme-atmaterial
-svn export https://github.com/haiibo/packages/trunk/luci-theme-opentomcat package/luci-theme-opentomcat
-# svn export https://github.com/haiibo/packages/trunk/luci-theme-netgear package/luci-theme-netgear
+git_sparse_clone main https://github.com/haiibo/packages luci-theme-atmaterial luci-theme-opentomcat luci-theme-netgear
 
 # 更改 Argon 主题背景
 cp -f $GITHUB_WORKSPACE/pics/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
-# 晶晨宝盒
-svn export https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
-sed -i "s|firmware_repo.*|firmware_repo 'https://github.com/haiibo/OpenWrt'|g" package/luci-app-amlogic/root/etc/config/amlogic
-# sed -i "s|kernel_path.*|kernel_path 'https://github.com/ophub/kernel'|g" package/luci-app-amlogic/root/etc/config/amlogic
-sed -i "s|ARMv8|ARMv8_PLUS|g" package/luci-app-amlogic/root/etc/config/amlogic
-
-# SmartDNS
-# git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
-# git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
-
-# msd_lite
-# git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-app-msd_lite
-# git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
-
-# MosDNS
-# svn export https://github.com/sbwml/luci-app-mosdns/trunk/luci-app-mosdns package/luci-app-mosdns
-# svn export https://github.com/sbwml/luci-app-mosdns/trunk/mosdns package/mosdns
-
-# DDNS.to
-# svn export https://github.com/linkease/nas-packages-luci/trunk/luci/luci-app-ddnsto package/luci-app-ddnsto
-# svn export https://github.com/linkease/nas-packages/trunk/network/services/ddnsto package/ddnsto
-
-# Alist
-svn export https://github.com/sbwml/luci-app-alist/trunk/luci-app-alist package/luci-app-alist
-svn export https://github.com/sbwml/luci-app-alist/trunk/alist package/alist
-
-# iStore
-svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
-svn export https://github.com/linkease/istore/trunk/luci package/luci-app-store
-
 # 在线用户
-svn export https://github.com/haiibo/packages/trunk/luci-app-onliner package/luci-app-onliner
+git_sparse_clone main https://github.com/haiibo/packages luci-app-onliner
 sed -i '$i uci set nlbwmon.@nlbwmon[0].refresh_interval=2s' package/lean/default-settings/files/zzz-default-settings
 sed -i '$i uci commit nlbwmon' package/lean/default-settings/files/zzz-default-settings
 chmod 755 package/luci-app-onliner/root/usr/share/onliner/setnlbw.sh
@@ -120,11 +67,6 @@ find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_U
 # 取消主题默认设置
 find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
 
-# 调整 V2ray服务器 到 VPN 菜单
-# sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/controller/*.lua
-# sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/model/cbi/v2ray_server/*.lua
-# sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/view/v2ray_server/*.htm
-
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
@@ -139,28 +81,4 @@ sed -i 's/192.168.1.1/192.168.1.202/g' package/base-files/files/bin/config_gener
 sed -i '/uci commit system/i\uci set system.@system[0].hostname='NibiruWrt'' package/lean/default-settings/files/zzz-default-settings
 sed -i "s/OpenWrt /KoNan @ NibiruWrt /g" package/lean/default-settings/files/zzz-default-settings
 
-# 更改默认 Shell 为 zsh
-# sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 
-# TTYD 自动登录
-# sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
-
-# Set Default Language - English
-# sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-files/files/etc/rc.local
-
-# CHG Netdata support SSL (with hook-feeds.sh)
-# sed -i 's/http/https/g' package/feeds/luci/luci-app-netdata/luasrc/view/netdata/netdata.htm
-
-# uhttpd cert
-# sed -i 's/uhttpd.crt/uhttpd.pem/g' package/network/services/uhttpd/files/uhttpd.config
-
-# CHG Netdata support SSL
-# sed -i 's/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c +libopenssl/g' feeds/packages/admin/netdata/Makefile
-# sed -i 's/disable-https/enable-https/g' feeds/packages/admin/netdata/Makefile
-# sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n        SSL key = /etc/netdata/ssl/key.pem\n' feeds/packages/admin/netdata/files/netdata.conf
-# sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
-# sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
-
-# TTYD SSL+IPv6 Config
-# sed -i 's/option interface/# option interface/g' feeds/packages/utils/ttyd/files/ttyd.config
-# sed -i "/command/a\        option ipv6 'on'\n        option ssl '1'\n        option ssl_cert /etc/uhttpd.pem\n        option ssl_key /etc/uhttpd.key" feeds/packages/utils/ttyd/files/ttyd.config
