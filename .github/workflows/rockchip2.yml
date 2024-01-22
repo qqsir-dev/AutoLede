@@ -13,7 +13,7 @@ on:
     - cron: 0 17 * * *
 
 env:
-  REPO_URL: https://github.com/qqsir-dev/lede_x86_64
+  REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   CONFIG_FILE: config/rockchip2.config
   DIY_SCRIPT: script/rockchip2.sh
