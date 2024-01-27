@@ -7,7 +7,7 @@
 #===============================================
 
 # Test kernel 6.1
-sed -i 's/5.15/6.1/g' target/linux/rockchip/Makefile
+sed -i 's/5.15/6.1/g' target/linux/x86/Makefile
 
 # Network Configuration
 sed -i "/exit/iuci set network.lan.netmask=\'255.255.255.0\'\nuci set network.lan.dns=\'119.29.29.29 223.5.5.5 114.114.114.114\'\nuci set network.lan.ip6assign=\'64\'\nuci set network.lan.ifname=\'eth0 eth1 eth3\'\nuci set network.wan6.ifname=\'@wan\'\nuci commit network\n" package/lean/default-settings/files/zzz-default-settings
