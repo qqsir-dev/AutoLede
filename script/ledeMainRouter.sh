@@ -126,7 +126,7 @@ find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
-# Test kernel 6.1
+# Test kernel 6.6
 # sed -i 's/6.1/6.6/g' target/linux/x86/Makefile
 
 # Network Configuration
