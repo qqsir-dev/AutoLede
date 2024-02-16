@@ -71,7 +71,7 @@ find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/
 ./scripts/feeds install -a
 
 # Test kernel 6.1
-sed -i 's/5.15/6.1/g' target/linux/arm/Makefile
+# sed -i 's/5.15/6.1/g' target/linux/arm/Makefile
 
 # Network Configuration
 sed -i "/exit/iuci set network.lan.netmask=\'255.255.255.0\'\nuci set network.lan.dns=\'192.168.1.207 119.29.29.29 223.5.5.5\'\nuci set network.lan.gateway=\'192.168.1.201\'\nuci commit network" package/lean/default-settings/files/zzz-default-settings
