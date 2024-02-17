@@ -21,7 +21,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: Rockchip
+  FIRMWARE_TAG: Rockchip-R68s
   TZ: Asia/Shanghai
 
 jobs:
