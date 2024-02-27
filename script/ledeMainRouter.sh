@@ -156,4 +156,4 @@ sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-file
 # sed -i "/command/a\        option ipv6 'on'\n        option ssl '1'\n        option ssl_cert /etc/uhttpd.pem\n        option ssl_key /etc/uhttpd.key" feeds/packages/utils/ttyd/files/ttyd.config
 
 # GoLang - xray
-# rm -rf feeds/packages/lang/golang && git clone -b 21.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+rm -rf feeds/packages/lang/golang && git clone -b 21.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
