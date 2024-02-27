@@ -120,6 +120,9 @@ find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
+# GoLang - xray
+rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+
 # Test kernel 6.6
 # sed -i 's/6.1/6.6/g' target/linux/x86/Makefile
 
@@ -154,6 +157,3 @@ sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-file
 # TTYD SSL+IPv6 Config
 # sed -i 's/option interface/# option interface/g' feeds/packages/utils/ttyd/files/ttyd.config
 # sed -i "/command/a\        option ipv6 'on'\n        option ssl '1'\n        option ssl_cert /etc/uhttpd.pem\n        option ssl_key /etc/uhttpd.key" feeds/packages/utils/ttyd/files/ttyd.config
-
-# GoLang - xray
-rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
