@@ -15,6 +15,7 @@ rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-mosdns
 # rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-serverchan
+rm -rf feeds/packages/net/v2ray-geodata
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
@@ -64,7 +65,11 @@ cp -f $GITHUB_WORKSPACE/pics/bg1.jpg package/luci-theme-argon/htdocs/luci-static
 # git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
 
 # MosDNS
-git clone --depth=1 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
+# drop mosdns and v2ray-geodata packages that come with the source
+find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+find ./ | grep Makefile | grep mosdns | xargs rm -f
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # DDNS.to
 # git_sparse_clone main https://github.com/linkease/nas-packages-luci luci/luci-app-ddnsto
