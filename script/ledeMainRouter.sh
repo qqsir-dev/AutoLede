@@ -7,12 +7,12 @@
 #===============================================
 
 # 移除要替换的包
-# rm -rf feeds/packages/net/mosdns
+rm -rf feeds/packages/net/mosdns
 # rm -rf feeds/packages/net/msd_lite
 # rm -rf feeds/packages/net/smartdns
 rm -rf feeds/luci/themes/luci-theme-argon
 # rm -rf feeds/luci/themes/luci-theme-netgear
-# rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/luci/applications/luci-app-mosdns
 # rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-serverchan
 
@@ -64,7 +64,7 @@ cp -f $GITHUB_WORKSPACE/pics/bg1.jpg package/luci-theme-argon/htdocs/luci-static
 # git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
 
 # MosDNS
-# git clone --depth=1 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
+git clone --depth=1 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
 
 # DDNS.to
 # git_sparse_clone main https://github.com/linkease/nas-packages-luci luci/luci-app-ddnsto
