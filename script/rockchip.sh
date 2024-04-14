@@ -6,7 +6,7 @@
 # Author: qqsir
 #===============================================
 
-# Test kernel 6.1
+# Test kernel 6.6
 sed -i 's/6.1/6.6/g' target/linux/rockchip/Makefile
 
 # Network Configuration
