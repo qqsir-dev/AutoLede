@@ -35,7 +35,7 @@ rm -rf feeds/luci/themes/luci-theme-argon
 # rm -rf feeds/luci/themes/luci-theme-netgear
 # rm -rf feeds/luci/applications/luci-app-dockerman
 # rm -rf feeds/luci/applications/luci-app-mosdns
-# rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-serverchan
 
 # Git稀疏克隆，只克隆指定目录到本地
@@ -156,6 +156,10 @@ sed -i 's|admin\\|admin\\/services\\|g' feeds/luci/applications/luci-app-dockerm
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+
+# Netdata ACL
+sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
+sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
 
 # GoLang
 # rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
