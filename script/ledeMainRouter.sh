@@ -29,13 +29,13 @@ function git_sparse_clone() {
 }
 
 # 添加额外插件
-# git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
-# git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
-# git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
+git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
+git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
+git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
-# git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 # git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
-# git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-filebrowser luci-app-ssr-mudb-server
+git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-filebrowser luci-app-ssr-mudb-server
 git_sparse_clone openwrt-18.06 https://github.com/immortalwrt/luci applications/luci-app-eqos
 # git_sparse_clone master https://github.com/syb999/openwrt-19.07.1 package/network/services/msd_lite
 
@@ -147,7 +147,7 @@ sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_genera
 # Set Default Language - English
 sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-files/files/etc/rc.local
 
-# CHG Netdata support SSL (with hook-feeds.sh)
+# CHG Netdata support SSL
 # sed -i 's/http/https/g' package/feeds/luci/luci-app-netdata/luasrc/view/netdata/netdata.htm
 
 # uhttpd cert
@@ -157,8 +157,9 @@ sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-file
 # sed -i 's/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c/DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c +libopenssl/g' feeds/packages/admin/netdata/Makefile
 # sed -i 's/disable-https/enable-https/g' feeds/packages/admin/netdata/Makefile
 # sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n        SSL key = /etc/netdata/ssl/key.pem\n' feeds/packages/admin/netdata/files/netdata.conf
-# sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
-# sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
+# Netdata ACL
+sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
+sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
 
 # TTYD SSL+IPv6 Config
 # sed -i 's/option interface/# option interface/g' feeds/packages/utils/ttyd/files/ttyd.config
