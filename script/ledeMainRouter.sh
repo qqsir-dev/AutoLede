@@ -158,8 +158,8 @@ sed -i "/exit/ised -i \"s/'zh_cn'/'en'/g\" /etc/config/luci\n" package/base-file
 # sed -i 's/disable-https/enable-https/g' feeds/packages/admin/netdata/Makefile
 # sed -i '/\[\plugins/i\        SSL certificate = /etc/netdata/ssl/cert.pem\n        SSL key = /etc/netdata/ssl/key.pem\n' feeds/packages/admin/netdata/files/netdata.conf
 # Netdata ACL
-sed -i 's/allow connections from = localhost/allow connections from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
-sed -i 's/allow dashboard from = localhost/allow dashboard from = localhost 2408:*/g' feeds/packages/admin/netdata/files/netdata.conf
+sed -i 's/allow connections from = localhost/allow connections from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
+sed -i 's/allow dashboard from = localhost/allow dashboard from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
 
 # TTYD SSL+IPv6 Config
 # sed -i 's/option interface/# option interface/g' feeds/packages/utils/ttyd/files/ttyd.config
