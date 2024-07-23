@@ -157,13 +157,10 @@ sed -i 's|admin\\|admin\\/services\\|g' feeds/luci/applications/luci-app-dockerm
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
-#Go1.22.x
-
-
 # Netdata ACL
 sed -i 's/allow connections from = localhost/allow connections from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
 sed -i 's/allow dashboard from = localhost/allow dashboard from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
 
 # GoLang
-# rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
