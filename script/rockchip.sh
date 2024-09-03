@@ -162,7 +162,7 @@ sed -i 's/allow connections from = localhost/allow connections from = * localhos
 sed -i 's/allow dashboard from = localhost/allow dashboard from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
 
 # Rockchip rk3568 compile 
-# sed -i '/^UBOOT_TARGETS := rk3528-evb rk3588-evb/s/^/#/' package/boot/uboot-rk35xx/Makefile
+sed -i '/^UBOOT_TARGETS := rk3528-evb rk3588-evb/s/^/#/' package/boot/uboot-rk35xx/Makefile
 
 # GoLang
 rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
