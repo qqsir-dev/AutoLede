@@ -112,7 +112,6 @@ jobs:
     - name: Install Feeds
       run: |
         cd $OPENWRT_PATH
-        # add mihomo to feed
         echo "src-git mihomo https://github.com/morytyann/OpenWrt-mihomo.git;main" >> "feeds.conf.default"
         ./scripts/feeds update -a
         ./scripts/feeds install -a
