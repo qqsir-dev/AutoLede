@@ -7,7 +7,7 @@
 ### 本固件目前完全根据我自己的需求编译配置支持Netdata+SSL，需要证书才能正常使用！
 ### This firmware is currently compiled and configured according to my own needs to support Netdata+SSL, and a certificate is required for normal use!
 - 用户名：root 密码：password  x86固件管理IP：192.168.50.2 (r4s固件管理地址为192.168.11.1)（R68s固件管理地址为192.168.50.1）
-- Username: root Password: password Default IP: 192.168.50.2 (r4s firmware IP: 192.168.11.1) (R68s firmware IP: 192.168.50.1）
+- Username: root Password: password x86 firmware Default IP: 192.168.50.2 (r4s firmware IP: 192.168.11.1) (R68s firmware IP: 192.168.50.1）
 - 固件下载地址 Download：https://github.com/qqsir-dev/AutoLede/releases
 
 ## 鸣谢 Express Gratitude
