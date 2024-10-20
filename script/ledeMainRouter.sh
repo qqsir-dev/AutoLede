@@ -77,7 +77,7 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 # git_sparse_clone master https://github.com/linkease/nas-packages network/services/ddnsto
 
 # Alist
-git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
+git clone -b lua --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
 
 # iStore
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
