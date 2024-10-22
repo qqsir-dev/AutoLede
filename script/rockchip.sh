@@ -12,7 +12,10 @@ sed -i 's/6.1/6.6/g' target/linux/rockchip/Makefile
 # Network Configuration
 sed -i "/exit/iuci set network.wan.ifname=\'eth2\'\nuci set network.wan.proto=\'pppoe\'\nuci set network.wan.username=\'990001257663\'\nuci set network.wan.password=\'u6s3x4r8\'\nuci set network.lan.netmask=\'255.255.255.0\'\nuci set network.lan.dns=\'119.29.29.29 223.5.5.5 114.114.114.114\'\nuci set network.lan.ip6assign=\'64\'\nuci set network.lan.ifname=\'eth0 eth1 eth3\'\nuci set network.wan6.ifname=\'@wan\'\nuci commit network\nuci set dhcp.lan.ignore=\'0\'\nuci set dhcp.lan.start=\'150\'\nuci set dhcp.lan.limit=\'100\'\nuci set dhcp.lan.ra_management=\'1\'\nuci add_list dhcp.lan.dhcp_option=\'6,223.5.5.5,119.29.29.29,114.114.114.114\'\nuci set dhcp.lan.force=\'1\'\nuci set dhcp.lan.ra=\'hybrid\'\nuci set dhcp.lan.ra_default=\'1\'\nuci set dhcp.lan.dhcpv6=\'relay\'\nuci set dhcp.lan.ndp=\'relay\'\nuci add dhcp host\nuci add dhcp host\nuci set dhcp.@host[-1].name=\'EAX80\'\nuci set dhcp.@host[-1].dns=\'1\'\nuci set dhcp.@host[-1].mac=\'3c:37:86:c8:e8:05\'\nuci set dhcp.@host[-1].ip=\'192.168.50.6\'\nuci set dhcp.@host[-1].leasetime=\'infinite\'\nuci commit dhcp\nuci set ddns.aliyun=\'service\'\nuci set ddns.aliyun.service_name=\'aliyun.com\'\nuci set ddns.aliyun.enabled=\'1\'\nuci set ddns.aliyun.lookup_host=\'fhome.bmwlive.club\'\nuci set ddns.aliyun.domain=\'fhome.bmwlive.club\'\nuci set ddns.aliyun.username=\'LTAIHiwKt52WZmKg\'\nuci set ddns.aliyun.password=\'Wlxr4IEL1IQKPtXaBlhVlGWqefF8BK\'\nuci set uci set ddns.aliyun.ip_source=\'web\'\nuci set ddns.aliyun.ip_url=\'http://ip.3322.net\'\nuci set ddns.aliyun.bind_network=\'wan\'\nuci commit ddns\nuci add firewall redirect\nuci set firewall.@redirect[-1].target=\'DNAT\'\nuci set firewall.@redirect[-1].src=\'wan\'\nuci set firewall.@redirect[-1].dest=\'lan\'\nuci set firewall.@redirect[-1].proto=\'tcp\'\nuci set firewall.@redirect[-1].src_dport=\'8098\'\nuci set firewall.@redirect[-1].dest_ip=\'192.168.50.1\'\nuci set firewall.@redirect[-1].dest_port=\'80\'\nuci set firewall.@redirect[-1].name=\'Router\'\nuci add firewall redirect\nuci set firewall.@redirect[-1].target=\'DNAT\'\nuci set firewall.@redirect[-1].src=\'wan\'\nuci set firewall.@redirect[-1].dest=\'lan\'\nuci set firewall.@redirect[-1].proto=\'tcp\'\nuci set firewall.@redirect[-1].src_dport=\'19999\'\nuci set firewall.@redirect[-1].dest_ip=\'192.168.50.1\'\nuci set firewall.@redirect[-1].dest_port=\'19999\'\nuci set firewall.@redirect[-1].name=\'LedeNetdata\'\nuci add firewall redirect\nuci set firewall.@redirect[-1].target=\'DNAT\'\nuci set firewall.@redirect[-1].src=\'wan\'\nuci set firewall.@redirect[-1].dest=\'lan\'\nuci set firewall.@redirect[-1].proto=\'tcp\'\nuci set firewall.@redirect[-1].src_dport=\'7681\'\nuci set firewall.@redirect[-1].dest_ip=\'192.168.50.1\'\nuci set firewall.@redirect[-1].dest_port=\'7681\'\nuci set firewall.@redirect[-1].name=\'TTYD\'\nuci commit firewall\n" package/lean/default-settings/files/zzz-default-settings
 
-# 修改默认IP
+# 修改默认IP - luci2
+sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/luci2/bin/config_generate
+
+# 修改默认IP - 18.06
 sed -i 's/192.168.1.1/192.168.50.1/g' package/base-files/files/bin/config_generate
 
 # 更改默认 Shell 为 zsh
@@ -49,13 +52,13 @@ function git_sparse_clone() {
 
 # 添加额外插件
 git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
-git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
+git clone --depth=1 -b master https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
 git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
 git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-filebrowser luci-app-ssr-mudb-server
-git_sparse_clone openwrt-18.06 https://github.com/immortalwrt/luci applications/luci-app-eqos
+git_sparse_clone master https://github.com/immortalwrt/luci applications/luci-app-eqos
 # git_sparse_clone master https://github.com/syb999/openwrt-19.07.1 package/network/services/msd_lite
 
 # 科学上网插件
@@ -66,8 +69,8 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-
 git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
 # Themes
-git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+git clone --depth=1 -b master https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
+git clone --depth=1 -b master https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
 git_sparse_clone main https://github.com/haiibo/packages luci-theme-atmaterial luci-theme-opentomcat luci-theme-netgear
