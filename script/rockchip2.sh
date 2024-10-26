@@ -5,6 +5,8 @@
 # Lisence: MIT
 # Author: qqsir
 #===============================================
+# GoLang
+rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
 # Test kernel 6.6
 sed -i 's/6.1/6.6/g' target/linux/rockchip/Makefile
@@ -158,6 +160,3 @@ sed -i '/^UBOOT_TARGETS := rk3528-evb rk3588-evb/s/^/#/' package/boot/uboot-rk35
 # Netdata ACL
 sed -i 's/allow connections from = localhost/allow connections from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
 sed -i 's/allow dashboard from = localhost/allow dashboard from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
-
-# GoLang
-rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
