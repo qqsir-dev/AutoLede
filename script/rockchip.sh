@@ -6,7 +6,7 @@
 # Author: qqsir
 #===============================================
 # GoLang
-rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 # Test kernel 6.6
 sed -i 's/6.1/6.6/g' target/linux/rockchip/Makefile
