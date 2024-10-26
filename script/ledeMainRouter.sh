@@ -5,6 +5,8 @@
 # Lisence: MIT
 # Author: qqsir
 #===============================================
+# GoLang
+rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
 # 移除要替换的包
 rm -rf feeds/packages/utils/v2dat
@@ -128,9 +130,6 @@ git_sparse_clone main https://github.com/morytyann/OpenWrt-mihomo luci-app-mihom
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-
-# GoLang
-rm -rf feeds/packages/lang/golang && git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
 # Test kernel 6.6
 # sed -i 's/6.1/6.6/g' target/linux/x86/Makefile
