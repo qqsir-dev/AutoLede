@@ -14,6 +14,7 @@ uci commit luci
 # sed -i 's/^[^#].*option ula/#&/' /etc/config/network
 
 #Add eth1-4 as Lan port
+sed -i 's/list ports \'eth0\'/list ports \'eth1\'/g' /etc/config/network
 sed -i "/list ports \'eth1\'/a\        list ports \'eth2\'\n        list ports \'eth3\'\n        list ports \'eth4\'" /etc/config/network
 
 # Check file system during boot
