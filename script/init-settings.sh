@@ -23,7 +23,7 @@ uci commit luci
 #Set Turboacc
 uci set turboacc.config.tcpcca='bbr'
 uci set turboacc.config.fullcone='2'
-uci set turboacc.config.fastpath_fo_hw='1'
+uci set turboacc.config.fastpath_fo_hw='0'
 uci commit turboacc
 /etc/init.d/turboacc restart
 
