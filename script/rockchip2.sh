@@ -155,7 +155,7 @@ sed -i 's|admin\\|admin\\/services\\|g' feeds/luci/applications/luci-app-dockerm
 ./scripts/feeds install -a
 
 # Rockchip compile 
-sed -i '/^UBOOT_TARGETS := rk3528-evb rk3588-evb/s/^/#/' package/boot/uboot-rk35xx/Makefile
+# sed -i '/^UBOOT_TARGETS := rk3528-evb rk3588-evb/s/^/#/' package/boot/uboot-rk35xx/Makefile
 
 # Netdata ACL
 sed -i 's/allow connections from = localhost/allow connections from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
