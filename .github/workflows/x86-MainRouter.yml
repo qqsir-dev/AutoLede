@@ -114,11 +114,6 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
     
-    - name: MOD index file
-      run: |
-        cd $OPENWRT_PATH/package/lean/autocore/files/x86
-        sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Project URL %></td><td><a href="https://github.com/qqsir-dev/AutoLede" target="_blank"><%:Firmware Project%></a></td></tr>' index.htm
-
     - name: Load Custom Configuration
       run: |
         [ -e files ] && mv files $OPENWRT_PATH/files
