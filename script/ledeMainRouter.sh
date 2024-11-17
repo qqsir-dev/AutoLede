@@ -166,6 +166,9 @@ sed -i 's/192.168.1.1/192.168.50.2/g' package/base-files/files/bin/config_genera
 sed -i 's/allow connections from = localhost/allow connections from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
 sed -i 's/allow dashboard from = localhost/allow dashboard from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
 
+# Rename LEDE
+# sed -i 's/LEDE/TimWrt/g' package/base-files/luci2/bin/config_generate
+
 # TTYD SSL+IPv6 Config
 # sed -i 's/option interface/# option interface/g' feeds/packages/utils/ttyd/files/ttyd.config
 # sed -i "/command/a\        option ipv6 'on'\n        option ssl '1'\n        option ssl_cert /etc/uhttpd.pem\n        option ssl_key /etc/uhttpd.key" feeds/packages/utils/ttyd/files/ttyd.config
