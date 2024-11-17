@@ -167,7 +167,7 @@ sed -i 's/allow connections from = localhost/allow connections from = * localhos
 sed -i 's/allow dashboard from = localhost/allow dashboard from = * localhost/g' feeds/packages/admin/netdata/files/netdata.conf
 
 # Rename LEDE
-# sed -i 's/LEDE/TimWrt/g' package/base-files/luci2/bin/config_generate
+# sed -i 's/hostname=\'LEDE\'/hostname=\'TimWrt\'/g' package/base-files/luci2/bin/config_generate
 
 # TTYD SSL+IPv6 Config
 # sed -i 's/option interface/# option interface/g' feeds/packages/utils/ttyd/files/ttyd.config
