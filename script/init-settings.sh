@@ -20,11 +20,4 @@ uci commit luci
 # uci set fstab.@global[0].check_fs=1
 # uci commit fstab
 
-#Set Turboacc
-uci set turboacc.config.tcpcca='bbr'
-uci set turboacc.config.fullcone='2'
-uci set turboacc.config.fastpath_fo_hw='0'
-uci commit turboacc
-/etc/init.d/turboacc restart
-
 exit 0
