@@ -42,7 +42,7 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFil
 # git_sparse_clone master https://github.com/syb999/openwrt-19.07.1 package/network/services/msd_lite
 
 # 科学上网插件
-git clone --depth -b main https://github.com/VIKINGYFY/homeproxy package/luci-app-homeproxy
+git clone --depth=1 -b main https://github.com/VIKINGYFY/homeproxy package/luci-app-homeproxy
 # git clone --depth=1 https://github.com/fw876/helloworld package/luci-app-ssr-plus
 # svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
