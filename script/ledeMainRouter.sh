@@ -42,7 +42,7 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFil
 # git_sparse_clone master https://github.com/syb999/openwrt-19.07.1 package/network/services/msd_lite
 
 # 科学上网插件
-git_sparse_clone main https://github.com/VIKINGYFY/homeproxy homeproxy
+git clone --depth -b main https://github.com/VIKINGYFY/homeproxy package/luci-app-homeproxy
 # git clone --depth=1 https://github.com/fw876/helloworld package/luci-app-ssr-plus
 # svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
@@ -56,6 +56,7 @@ git clone --depth=1 -b master https://github.com/jerrykuku/luci-theme-argon pack
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
 git_sparse_clone main https://github.com/haiibo/packages luci-theme-atmaterial luci-theme-opentomcat luci-theme-netgear
+git clone --depth=1 -b js https://github.com/sirpdboy/luci-theme-kucat package/luci-theme-kucat
 
 # 更改 Argon 主题背景
 cp -f $GITHUB_WORKSPACE/pics/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
