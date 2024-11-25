@@ -15,7 +15,7 @@ GEO_SITE="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.da
 GEO_IP="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geoip.dat"
 
 cd $PKG_PATCH/luci-app-openclash/root/etc/openclash/
-
+ls
 	curl -sL -o Country.mmdb $GEO_MMDB && echo "Country.mmdb done!"
 	curl -sL -o GeoSite.dat $GEO_SITE && echo "GeoSite.dat done!"
 	curl -sL -o GeoIP.dat $GEO_IP && echo "GeoIP.dat done!"
