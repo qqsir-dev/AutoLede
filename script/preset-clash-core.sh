@@ -14,13 +14,13 @@ GEO_MMDB="https://github.com/alecthw/mmdb_china_ip_list/raw/release/lite/Country
 GEO_SITE="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat"
 GEO_IP="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geoip.dat"
 
-cd ./luci-app-openclash/root/etc/openclash/
+cd luci-app-openclash/root/etc/openclash/
 
 	curl -sL -o Country.mmdb $GEO_MMDB && echo "Country.mmdb done!"
 	curl -sL -o GeoSite.dat $GEO_SITE && echo "GeoSite.dat done!"
 	curl -sL -o GeoIP.dat $GEO_IP && echo "GeoIP.dat done!"
 
-	mkdir ./core/ && cd ./core/
+	mkdir core/ && cd core/
 
 	curl -sL -o meta.tar.gz $CORE_MATE && tar -zxf meta.tar.gz && mv -f clash clash_meta && echo "meta done!"
 	curl -sL -o tun.gz $CORE_TUN && gzip -d tun.gz && mv -f tun clash_tun && echo "tun done!"
