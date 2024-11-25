@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PKG_PATCH="$GITHUB_WORKSPACE/openwrt/package/"
+PKG_PATCH="$OPENWRT_PATH/package/"
 
 CORE_VER="https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version"
 # CORE_TYPE=$(echo $WRT_TARGET | grep -Eiq "64|86" && echo "amd64" || echo "arm64")
@@ -13,9 +13,8 @@ CORE_TUN="https://github.com/vernesong/OpenClash/raw/core/dev/premium/clash-linu
 GEO_MMDB="https://github.com/alecthw/mmdb_china_ip_list/raw/release/lite/Country.mmdb"
 GEO_SITE="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat"
 GEO_IP="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geoip.dat"
-cd $OPENWRT_PATH
-ls
-cd package/luci-app-openclash/root/etc/openclash/
+
+cd $PKG_PATCH/luci-app-openclash/root/etc/openclash/
 
 	curl -sL -o Country.mmdb $GEO_MMDB && echo "Country.mmdb done!"
 	curl -sL -o GeoSite.dat $GEO_SITE && echo "GeoSite.dat done!"
