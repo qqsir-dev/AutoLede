@@ -20,13 +20,13 @@ pwd
 	curl -sL -o GeoSite.dat $GEO_SITE && echo "GeoSite.dat done!"
 	curl -sL -o GeoIP.dat $GEO_IP && echo "GeoIP.dat done!"
 ls
-	mkdir core/ && cd core/
+	mkdir ./core/ && cd ./core/
 
 	curl -sL -o meta.tar.gz $CORE_MATE && tar -zxf meta.tar.gz && mv -f clash clash_meta && echo "meta done!"
 	curl -sL -o tun.gz $CORE_TUN && gzip -d tun.gz && mv -f tun clash_tun && echo "tun done!"
 	curl -sL -o dev.tar.gz $CORE_DEV && tar -zxf dev.tar.gz && echo "dev done!"
-pwd
-ls
+	pwd
+	ls
 	chmod +x * && rm -rf *.gz
 
 	cd $PKG_PATCH && echo "openclash date has been updated!"
