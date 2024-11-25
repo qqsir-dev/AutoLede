@@ -2,7 +2,6 @@
 
 mkdir -p files/etc/openclash/core
 CORE_VER="https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version"
-# CORE_TYPE=$(echo $WRT_TARGET | grep -Eiq "64|86" && echo "amd64" || echo "arm64")
 CORE_TUN_VER=$(curl -sL $CORE_VER | sed -n "2{s/\r$//;p;q}")
 
 CORE_DEV="https://github.com/vernesong/OpenClash/raw/core/dev/dev/clash-linux-${1}.tar.gz"
