@@ -27,6 +27,6 @@ ls
 	curl -sL -o dev.tar.gz $CORE_DEV && tar -zxf dev.tar.gz && echo "dev done!"
 	pwd
 	ls
-	chmod +x * && rm -rf *.gz
-
+	chmod +x ./* && rm -rf ./*.gz
+	ls
 	cd $PKG_PATCH && echo "openclash date has been updated!"
