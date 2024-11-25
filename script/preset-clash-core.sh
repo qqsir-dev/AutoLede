@@ -13,8 +13,9 @@ CORE_TUN="https://github.com/vernesong/OpenClash/raw/core/dev/premium/clash-linu
 GEO_MMDB="https://github.com/alecthw/mmdb_china_ip_list/raw/release/lite/Country.mmdb"
 GEO_SITE="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat"
 GEO_IP="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geoip.dat"
-
+pwd
 cd $PKG_PATCH/luci-app-openclash/root/etc/openclash/
+pwd
 ls
 	curl -sL -o Country.mmdb $GEO_MMDB && echo "Country.mmdb done!"
 	curl -sL -o GeoSite.dat $GEO_SITE && echo "GeoSite.dat done!"
