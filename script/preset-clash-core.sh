@@ -17,8 +17,8 @@ curl -sL -o files/etc/openclash/Country.mmdb $GEO_MMDB && echo "Country.mmdb don
 curl -sL -o files/etc/openclash/GeoSite.dat $GEO_SITE && echo "GeoSite.dat done!"
 curl -sL -o files/etc/openclash/GeoIP.dat $GEO_IP && echo "GeoIP.dat done!"
 
-curl -sL -o files/etc/openclash/core/meta.tar.gz $CORE_MATE && tar -zxf files/etc/openclash/core/meta.tar.gz && mv -f files/etc/openclash/core/clash clash_meta && echo "meta done!"
-curl -sL -o files/etc/openclash/core/tun.gz $CORE_TUN && gzip -d files/etc/openclash/core/tun.gz && mv -f files/etc/openclash/core/tun clash_tun && echo "tun done!"
-curl -sL -o files/etc/openclash/core/dev.tar.gz $CORE_DEV && tar -zxf files/etc/openclash/core/dev.tar.gz && echo "dev done!"
+wget -qO- $CORE_DEV | tar xOvz > files/etc/openclash/core/clash
+wget -qO- $CORE_TUN | gunzip -c > files/etc/openclash/core/clash_tun
+wget -qO- $CORE_MATE | tar xOvz > files/etc/openclash/core/clash_meta
 
 chmod +x files/etc/openclash/core/clash*
