@@ -48,7 +48,7 @@ git clone --depth=1 -b main https://github.com/VIKINGYFY/homeproxy package/luci-
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
-git clone --depth=1 -b dev https://github.com/vernesong/OpenClash package/openclash
+git clone --depth=1 -b dev https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Themes
 git clone --depth=1 -b master https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
